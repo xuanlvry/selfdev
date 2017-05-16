@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"
+	   default-lazy-init="true">
+
+	<!--&lt;!&ndash;SimpleMappingExceptionResolver&ndash;&gt;-->
+	<!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+		<!--&lt;!&ndash; 定义默认的异常处理页面，当该异常类型的注册时使用 &ndash;&gt;-->
+		<!--<property name="defaultErrorView" value="index"></property>-->
+		<!--&lt;!&ndash; 定义异常处理页面用来获取异常信息的变量名，默认名为exception &ndash;&gt;-->
+		<!--<property name="exceptionAttribute" value="ex"></property>-->
+		<!--&lt;!&ndash; 定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值 &ndash;&gt;-->
+		<!--<property name="exceptionMappings">-->
+			<!--<props>-->
+				<!--<prop key="cn.basttg.core.exception.BusinessException">error-business</prop>-->
+				<!--<prop key="cn.basttg.core.exception.ParameterException">error-parameter</prop>-->
+				<!--&lt;!&ndash; 这里还可以继续扩展对不同异常类型的处理 &ndash;&gt;-->
+			<!--</props>-->
+		<!--</property>-->
+	<!--</bean>-->
+
+	<!--<bean id="exceptionHandler" class="com.my.test.springmvc.GlobalExceptionHandlerIm" />-->
+
+	<!-- 设置基于注解的IOC支持 -->
+	<context:annotation-config />
+
+	<!-- 设置@AspectJ支持 -->
+	<aop:aspectj-autoproxy />
+
+    <context:property-placeholder ignore-resource-not-found="true"
+                                  location="classpath*:META-INF/application.develop.properties" file-encoding="UTF-8" />
+
+    <!-- 扫描基于annotation的Spring Bean -->
+    <context:component-scan base-package="com.my.test" />
+
+	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil"/>
+
+	<!-- 启用缓存注解功能。指定一个默认的cacheManager，否则需要在注解使用时指定cache-Manager="xxx" -->
+	<!-- 另外还可以指定一个 key-generator，即默认的key生成策略 -->
+	<cache:annotation-driven cache-manager="memCacheManager"/>
+
+	<!--配置Spring内置缓存的缓存管理器-->
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<!--配置缓存区-->
+		<property name="caches">
+			<set>
+				<!--使用ConcurrentMapCacheFactoryBean配置缓存区下面列出多个缓存区，P:name用于为缓存区指定名字-->
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="default"/>
+				<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="accountCache"/>
+			</set>
+		</property>
+	</bean>
+
+	<bean id="memCacheManager" class="com.my.test.springcache.MemcacheCacheManager">
+		<property name="caches">
+			<set>
+				<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"
+					  p:name="orderInfoCache" p:exp="3600"/>
+				<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"
+					  p:name="userInfoCache" p:exp="3600"/>
+			</set>
+		</property>
+	</bean>
+
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - - - - Quartz 测试 - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--配置作业类-->
+    <!--<bean id="myjob2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+        <!--&lt;!&ndash;指定任务类&ndash;&gt;-->
+        <!--<property name="targetObject">-->
+            <!--<bean class="com.my.test.quartz.MyJob2"/>-->
+        <!--</property>-->
+        <!--&lt;!&ndash;指定运行的方法&ndash;&gt;-->
+        <!--<property name="targetMethod" value="doTask"/>-->
+        <!--&lt;!&ndash;作业是否并发调度&ndash;&gt;-->
+        <!--<property name="concurrent" value="false"/>-->
+    <!--</bean>-->
+
+    <!--<bean name="myjob" class="org.springframework.scheduling.quartz.JobDetailBean">-->
+        <!--&lt;!&ndash;jobClass属性即我们在java代码中定义的任务类&ndash;&gt;-->
+        <!--<property name="jobClass" value="com.my.test.quartz.MyJob"/>-->
+        <!--&lt;!&ndash;jobDataAsMap属性即该任务类中需要注入的属性值&ndash;&gt;-->
+        <!--<property name="jobDataAsMap">-->
+            <!--<map>-->
+                <!--<entry key="str" value="哇哈哈"/>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--配置触发器-->
+    <!--<bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="myjob2" />-->
+        <!--<property name="cronExpression" value="*/3 * * * * ?" />-->
+    <!--</bean>-->
+
+    <!--<bean id="mySimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="myjob" />-->
+        <!--&lt;!&ndash; 调度工厂实例化后，经过0秒开始执行调度 &ndash;&gt;-->
+        <!--<property name="startDelay" value="0" />-->
+        <!--&lt;!&ndash; 每2秒调度一次 &ndash;&gt;-->
+        <!--<property name="repeatInterval" value="2000" />-->
+    <!--</bean>-->
+
+    <!--配置触发器调度工厂-->
+    <!--<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+        <!--<property name="triggers">-->
+            <!--<list>-->
+                <!--<ref bean="myTrigger" />-->
+                <!--<ref bean="mySimpleTrigger" />-->
+            <!--</list>-->
+        <!--</property>-->
+		<!--<property name="taskExecutor" ref="taskExecutor" />-->
+    <!--</bean>-->
+
+	<!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
+		<!--&lt;!&ndash; 核心线程数 &ndash;&gt;-->
+		<!--<property name="corePoolSize" value="10" />-->
+		<!--&lt;!&ndash; 最大线程数 &ndash;&gt;-->
+		<!--<property name="maxPoolSize" value="100" />-->
+		<!--&lt;!&ndash; 队列最大长度 &ndash;&gt;-->
+		<!--<property name="queueCapacity" value="200" />-->
+		<!--&lt;!&ndash; 线程池维护线程所允许的空闲时间，默认为60s &ndash;&gt;-->
+		<!--<property name="keepAliveSeconds" value="60" />-->
+	<!--</bean>-->
+
+    <!-- - - - - - - - - - - - - - - - - - - - - Spring - task 测试 - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- 开启@Scheduled注解 -->
+	<!--<task:executor id="executor" pool-size="2" />-->
+	<!--<task:scheduler id="scheduler" pool-size="1" />-->
+	<!--<task:annotation-driven executor="executor" scheduler="scheduler" />-->
+
+	<!--<task:annotation-driven />-->
+
+    <!--<task:annotation-driven executor="EventBusJobExecutor" />-->
+    <!--<task:executor id="executor" pool-size="25-50"-->
+                   <!--queue-capacity="200" rejection-policy="CALLER_RUNS" />-->
+
+	<!--<task:scheduled-tasks scheduler="scheduler">-->
+		<!--<task:scheduled ref="myJob2" method="doTask" cron="*/2 * * * * ?"/>-->
+	<!--</task:scheduled-tasks>-->
+
+	<!-- - - - - - - - - - - - - - - - - - - - - rabbitMQ 测试 - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- rabbitmq 配置-->
+    <!-- for rabbitmq-->
+    <!--<rabbit:connection-factory id="connectionFactory" host="localhost" username="guest" password="guest" port="5672"-->
+            <!--virtual-host="/" channel-cache-size="5"/>-->
+
+    <!--<rabbit:connection-factory id="connectionFactory" addresses="localhost:5672" username="guest" password="guest" />-->
+
+    <!--<rabbit:admin connection-factory="connectionFactory" />-->
+
+    <!--&lt;!&ndash; queue队列声明 &ndash;&gt;-->
+    <!--<rabbit:queue id="my_queue" durable="true" auto-delete="false" exclusive="false" name="my_queue"/>-->
+
+    <!--&lt;!&ndash; 绑定，exchange接收消息生产者发送的消息，根据不同的路由算法将消息发往messageQueue。-->
+         <!--程序里，用的是key，然后exchange，对应到queue&ndash;&gt;-->
+    <!--<rabbit:direct-exchange durable="true" auto-delete="false" name="my-mq-exchange">-->
+        <!--<rabbit:bindings>-->
+            <!--<rabbit:binding queue="my_queue" key="my_queue_key" />-->
+        <!--</rabbit:bindings>-->
+    <!--</rabbit:direct-exchange>-->
+
+    <!--&lt;!&ndash; spring template声明&ndash;&gt;-->
+    <!--<rabbit:template id="rabbitTemplate" exchange="my-mq-exchange" connection-factory="connectionFactory"/>-->
+
+    <!--&lt;!&ndash; queue litener观察监听模式，当有消息到达时会通知监听在对应的队列上的监听对象&ndash;&gt;-->
+    <!--<rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">-->
+        <!--<rabbit:listener ref="cunsumer" queues="my_queue"/>-->
+    <!--</rabbit:listener-container>-->
+</beans>

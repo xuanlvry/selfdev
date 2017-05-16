@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.test.UserInfo">
+    <!-- 查询用户信息 -->
+    <select id="selectUser" parameterType="long" resultType="com.my.test.UserInfo">
+        SELECT realName as name FROM test02.userdetail WHERE id = 94
+    </select>
+
+    <insert id="insert" parameterType="com.my.test.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into user
+        (account,password,name,age,tel,sex,address,updateTime,createTime)
+        values
+        (${account},#{password},#{name},#{age},#{tel},#{sex},#{address},#{updateTime},current_timestamp())
+    </insert>
+
+    <insert id="inserttest" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+        insert into ${tablename}
+        (account,password,name,age,tel,sex,address,updateTime,createTime)
+        values
+        (${account},#{password},#{name},#{age},#{tel},#{sex},#{address},#{updateTime},current_timestamp())
+    </insert>
+
+</mapper>
