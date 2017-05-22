@@ -36,6 +36,26 @@
 	<!-- 设置@AspectJ支持 -->
 	<aop:aspectj-autoproxy />
 
+	<!-- 从dp-common-service中导出的 begin -->
+	<bean id="parentDao" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+		<property name="target">
+			<bean class="com.my.test.springaop.proxyfactorybean.WorkImpl"/>
+		</property>
+		<property name="proxyInterfaces" value="com.my.test.springaop.proxyfactorybean.IWork" />
+		<property name="interceptorNames">
+			<list>
+				<value>advisor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workProxy" class="com.my.test.springaop.proxyfactorybean.WorkProxy"/>
+
+	<bean id="advisor" class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+		<property name="advice" ref="workProxy"/>
+		<property name="expression" value="execution(* com.my.test.springaop..*.*(..))"/>
+	</bean>
+
     <context:property-placeholder ignore-resource-not-found="true"
                                   location="classpath*:META-INF/application.develop.properties" file-encoding="UTF-8" />
 
@@ -46,7 +66,7 @@
 
 	<!-- 启用缓存注解功能。指定一个默认的cacheManager，否则需要在注解使用时指定cache-Manager="xxx" -->
 	<!-- 另外还可以指定一个 key-generator，即默认的key生成策略 -->
-	<!--<cache:annotation-driven cache-manager="memCacheManager"/>-->
+	<cache:annotation-driven cache-manager="cacheManager"/>
 
 	<!--配置Spring内置缓存的缓存管理器-->
 	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">

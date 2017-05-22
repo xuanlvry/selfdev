@@ -24,21 +24,21 @@
     <context:property-placeholder ignore-resource-not-found="true"
                                   location="classpath*:META-INF/application.develop.properties" file-encoding="UTF-8" />
 
-    <aop:config>
-        <!-- Spring 2.0 可以用 AspectJ 的语法定义 Pointcut，这里拦截 service 包中的所有方法 -->
-        <aop:advisor id="methodTimeLog" advice-ref="methodTimeAdvice"
-                     pointcut-ref="customerAdvisor"/>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--&lt;!&ndash; Spring 2.0 可以用 AspectJ 的语法定义 Pointcut，这里拦截 service 包中的所有方法 &ndash;&gt;-->
+        <!--<aop:advisor id="methodTimeLog" advice-ref="methodTimeAdvice"-->
+                     <!--pointcut-ref="customerAdvisor"/>-->
+    <!--</aop:config>-->
 
-    <bean id="customerAdvisor" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
-        <property name="patterns">
-            <list>
-                <value>.sayHi.*</value>
-            </list>
-        </property>
+    <!--<bean id="customerAdvisor" class="org.springframework.aop.support.JdkRegexpMethodPointcut">-->
+        <!--<property name="patterns">-->
+            <!--<list>-->
+                <!--<value>.sayHi.*</value>-->
+            <!--</list>-->
+        <!--</property>-->
 
-        <!--<property name="advice" ref="methodTimeAdvice" />-->
-    </bean>
+        <!--&lt;!&ndash;<property name="advice" ref="methodTimeAdvice" />&ndash;&gt;-->
+    <!--</bean>-->
 
     <!--<bean id="proxyBean"  class="org.springframework.aop.framework.ProxyFactoryBean">-->
         <!--<property name="proxyInterfaces" value="com.my.test.springmvc.IMyHelloService"></property>-->
