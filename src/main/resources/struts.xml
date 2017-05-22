@@ -10,6 +10,8 @@
               value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
 
     <package name="myStruts" namespace="/" extends="json-default">
+        <default-action-ref name="hello" />
+
         <action name="hello" class="com.my.test.struts2.HelloAction">
             <result type="json"></result>
         </action>
