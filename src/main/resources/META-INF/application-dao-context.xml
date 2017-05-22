@@ -248,49 +248,49 @@
 
     <!-- - - - - - - - - - - - - - - - - - - - - xmemcached配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!--Memcached客户端工厂配置-->
-    <bean name="xmemcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder"
-          p:connectionPoolSize="10" p:failureMode="true">
-        <constructor-arg>
-            <list>
-                <bean class="java.net.InetSocketAddress">
-                    <constructor-arg>
-                        <value>127.0.0.1</value>
-                    </constructor-arg>
-                    <constructor-arg>
-                        <value>11211</value>
-                    </constructor-arg>
-                </bean>
-            </list>
-        </constructor-arg>
+    <!--<bean name="xmemcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder"-->
+          <!--p:connectionPoolSize="10" p:failureMode="true">-->
+        <!--<constructor-arg>-->
+            <!--<list>-->
+                <!--<bean class="java.net.InetSocketAddress">-->
+                    <!--<constructor-arg>-->
+                        <!--<value>127.0.0.1</value>-->
+                    <!--</constructor-arg>-->
+                    <!--<constructor-arg>-->
+                        <!--<value>11211</value>-->
+                    <!--</constructor-arg>-->
+                <!--</bean>-->
+            <!--</list>-->
+        <!--</constructor-arg>-->
 
-        <!-- 多服务器时，权重设置 -->
-        <constructor-arg>
-            <list>
-                <value>1</value>
-            </list>
-        </constructor-arg>
+        <!--&lt;!&ndash; 多服务器时，权重设置 &ndash;&gt;-->
+        <!--<constructor-arg>-->
+            <!--<list>-->
+                <!--<value>1</value>-->
+            <!--</list>-->
+        <!--</constructor-arg>-->
 
-        <!-- 使用二进制协议通讯，默认为TextCommandFactory -->
-        <property name="commandFactory">
-            <bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory"></bean>
-        </property>
+        <!--&lt;!&ndash; 使用二进制协议通讯，默认为TextCommandFactory &ndash;&gt;-->
+        <!--<property name="commandFactory">-->
+            <!--<bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory"></bean>-->
+        <!--</property>-->
 
-        <!-- 分布式策略 -->
-        <property name="sessionLocator">
-            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
-        </property>
+        <!--&lt;!&ndash; 分布式策略 &ndash;&gt;-->
+        <!--<property name="sessionLocator">-->
+            <!--<bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>-->
+        <!--</property>-->
 
-        <!-- 序列化转码器 -->
-        <property name="transcoder">
-            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder"/>
-        </property>
+        <!--&lt;!&ndash; 序列化转码器 &ndash;&gt;-->
+        <!--<property name="transcoder">-->
+            <!--<bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder"/>-->
+        <!--</property>-->
 
-        <!-- 缓冲区分配器 -->
-        <property name="bufferAllocator">
-            <bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>
-        </property>
-    </bean>
+        <!--&lt;!&ndash; 缓冲区分配器 &ndash;&gt;-->
+        <!--<property name="bufferAllocator">-->
+            <!--<bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>-->
+        <!--</property>-->
+    <!--</bean>-->
 
-    <bean name="xmemcachedClient" factory-bean="xmemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+    <!--<bean name="xmemcachedClient" factory-bean="xmemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />-->
 
 </beans>

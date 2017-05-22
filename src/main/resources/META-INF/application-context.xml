@@ -46,7 +46,7 @@
 
 	<!-- 启用缓存注解功能。指定一个默认的cacheManager，否则需要在注解使用时指定cache-Manager="xxx" -->
 	<!-- 另外还可以指定一个 key-generator，即默认的key生成策略 -->
-	<cache:annotation-driven cache-manager="memCacheManager"/>
+	<!--<cache:annotation-driven cache-manager="memCacheManager"/>-->
 
 	<!--配置Spring内置缓存的缓存管理器-->
 	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
@@ -60,16 +60,16 @@
 		</property>
 	</bean>
 
-	<bean id="memCacheManager" class="com.my.test.springcache.MemcacheCacheManager">
-		<property name="caches">
-			<set>
-				<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"
-					  p:name="orderInfoCache" p:exp="3600"/>
-				<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"
-					  p:name="userInfoCache" p:exp="3600"/>
-			</set>
-		</property>
-	</bean>
+	<!--<bean id="memCacheManager" class="com.my.test.springcache.MemcacheCacheManager">-->
+		<!--<property name="caches">-->
+			<!--<set>-->
+				<!--<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"-->
+					  <!--p:name="orderInfoCache" p:exp="3600"/>-->
+				<!--<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"-->
+					  <!--p:name="userInfoCache" p:exp="3600"/>-->
+			<!--</set>-->
+		<!--</property>-->
+	<!--</bean>-->
 
 
 
