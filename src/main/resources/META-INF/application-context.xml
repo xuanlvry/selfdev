@@ -40,6 +40,10 @@
 
 	<bean id="workMethodInterceptor" class="com.my.test.springaop.proxyfactorybean.WorkMethodInterceptor" />
 
+	<bean id="workBeforeAfterProxy" class="com.my.test.springaop.proxyfactorybean.WorkBeforeAfterProxy" />
+
+	<bean id="workExceptionProxy" class="com.my.test.springaop.proxyfactorybean.WorkExceptionProxy" />
+
 	<bean id="workImpl" class="com.my.test.springaop.proxyfactorybean.WorkImpl"/>
 
 	<!--这个workImplProxy可以取代一个IWork的实现，这里取代的实现是workImpl-->
@@ -57,6 +61,8 @@
 		<property name="interceptorNames">
 			<list>
 				<value>workMethodInterceptor</value>
+				<!--<value>workBeforeAfterProxy</value>-->
+				<!--<value>workExceptionProxy</value>-->
 			</list>
 		</property>
 	</bean>
