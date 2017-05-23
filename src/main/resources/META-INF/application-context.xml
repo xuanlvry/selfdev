@@ -36,24 +36,27 @@
 	<!-- 设置@AspectJ支持 -->
 	<aop:aspectj-autoproxy />
 
-	<!-- 从dp-common-service中导出的 begin -->
-	<bean id="parentDao" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+	<bean id="workBeforeProxy" class="com.my.test.springaop.proxyfactorybean.WorkBeforeProxy"/>
+
+	<bean id="workImpl" class="com.my.test.springaop.proxyfactorybean.WorkImpl"/>
+
+	<!--这个workImplProxy可以取代一个IWork的实现，这里取代的实现是workImpl-->
+	<bean id="workImplProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!--需要代理的接口-->
+		<property name="proxyInterfaces" value="com.my.test.springaop.proxyfactorybean.IWork"/>
+
+		<!--需要代理的某个接口实现【被代理的目标bean】-->
 		<property name="target">
-			<bean class="com.my.test.springaop.proxyfactorybean.WorkImpl"/>
+			<ref bean="workImpl"/>
 		</property>
-		<property name="proxyInterfaces" value="com.my.test.springaop.proxyfactorybean.IWork" />
+
+		<!--当前工厂中拦截器或advisorbean的名字。拦截器，advisor，前置, 后置和异常通知对象都可以在这里被使用。-->
+		<!--这里advisor的顺序是很重要的，排在前面的优先被调用-->
 		<property name="interceptorNames">
 			<list>
-				<value>advisor</value>
+				<value>workBeforeProxy</value>
 			</list>
 		</property>
-	</bean>
-
-	<bean id="workProxy" class="com.my.test.springaop.proxyfactorybean.WorkProxy"/>
-
-	<bean id="advisor" class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
-		<property name="advice" ref="workProxy"/>
-		<property name="expression" value="execution(* com.my.test.springaop..*.*(..))"/>
 	</bean>
 
     <context:property-placeholder ignore-resource-not-found="true"
