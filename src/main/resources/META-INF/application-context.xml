@@ -31,6 +31,7 @@
 	<!--<bean id="exceptionHandler" class="com.my.test.springmvc.GlobalExceptionHandlerIm" />-->
 
 	<!-- 设置基于注解的IOC支持 -->
+	<!-- 主干master分支，该处被更新-->
 	<context:annotation-config />
 
 	<!-- 设置@AspectJ支持 -->
