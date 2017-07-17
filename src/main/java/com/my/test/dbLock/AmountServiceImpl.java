@@ -23,11 +23,11 @@ public class AmountServiceImpl implements IAmountService{
     public void transfer(String threadName) {
         try {
 //            dbLockDAO.begin();
-            UserInfo dbUser = dbLockDAO.selectByIdForUpdate(61);
-            logger.info(threadName + "：查询userInfo信息amout：" + dbUser.getAmount());
-            dbUser.setAmount(dbUser.getAmount().subtract(new BigDecimal("100")));
-            dbLockDAO.updateAmount(dbUser);
-            logger.info(threadName + "：修改userInfo金额amout为：" + dbUser.getAmount());
+//            UserInfo dbUser = dbLockDAO.selectByIdForUpdate(61);
+//            logger.info(threadName + "：查询userInfo信息amout：" + dbUser.getAmount());
+//            dbUser.setAmount(dbUser.getAmount().subtract(new BigDecimal("100")));
+//            dbLockDAO.updateAmount(dbUser);
+//            logger.info(threadName + "：修改userInfo金额amout为：" + dbUser.getAmount());
 //            dbLockDAO.commit();
             System.out.println();
         } catch (Exception e) {

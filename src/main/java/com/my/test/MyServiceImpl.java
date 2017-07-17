@@ -29,6 +29,6 @@ public class MyServiceImpl implements IMyService {
     @Cacheable(value = "userInfoCache")
     public UserInfo selectBySpringCache(String account) {
         System.out.println("real querying db..." + account);
-        return new UserInfo("lanmeng", "23");
+        return new UserInfo();
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.my.test.mybatis.IUserGroupMapper">
+    <cache/>
+
+    <insert id="insert" parameterType="com.my.test.UserGroupInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into usergroup
+        (userid,groupid,createTime)
+        values
+        (#{userid},#{groupid},current_timestamp())
+    </insert>
+</mapper>

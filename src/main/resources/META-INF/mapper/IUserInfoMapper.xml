@@ -14,10 +14,10 @@
     </select>
 
     <insert id="insert" parameterType="com.my.test.UserInfo" useGeneratedKeys="true" keyProperty="id">
-        insert into user_data
-        (account,password,name,age,tel,sex,address,updateTime,createTime)
+        insert into user
+        (name,age,tel,sex,sign,createTime)
         values
-        (#{account},#{password},#{name},#{age},#{tel},#{sex},#{address},#{updateTime},current_timestamp())
+        (#{name},#{age},#{tel},#{sex},#{sign},current_timestamp())
     </insert>
 
     <update id="updateUser" parameterType="map">
