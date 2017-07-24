@@ -26,10 +26,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 
     /**
      * 获取对象 这里重写了bean方法，起主要作用
-     * 测试1：git pull / git fetch区别
-     * 测试2：
-     * 测试3：
-     * 测试更新
+     * 测试冲突入口
      * @param beanId
      */
     public static Object getBean(String beanId) throws BeansException {
