@@ -18,7 +18,7 @@ public class MybatisCacheController {
     @Autowired
     private IMyService myServiceImpl;
 
-    @RequestMapping(value = "selectbyid", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "selectbyid", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select(@RequestParam("id") Long id) {
         return myServiceImpl.selectUser(id);

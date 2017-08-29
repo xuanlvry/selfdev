@@ -11,7 +11,7 @@
     <properties>
         <!-- common setting -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.jdk.version>1.6</project.build.jdk.version>
+        <project.build.jdk.version>1.7</project.build.jdk.version>
     </properties>
 
     <dependencies>
@@ -284,6 +284,13 @@
             <scope>compile</scope>
         </dependency>
         <!-- mybatis end -->
+        <!--mybatis cache start-->
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-memcached</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--mybatis cache end-->
 
         <!--多数据库事务支持start-->
         <dependency>

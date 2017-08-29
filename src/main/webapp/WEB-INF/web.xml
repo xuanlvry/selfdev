@@ -119,28 +119,28 @@
     <!--</filter-mapping>-->
 
     <!--springMVC-->
-    <!--<servlet>-->
-        <!--<servlet-name>dispatcher</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>dispatcher</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <!--struts2-->
-    <filter>
-        <!-- 拦截器名称 -->
-        <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <!-- 映射 -->
-        <filter-name>struts2</filter-name >
-        <!-- 匹配模式，截取任何形式的请求 -->
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--&lt;!&ndash; 拦截器名称 &ndash;&gt;-->
+        <!--<filter-name>struts2</filter-name>-->
+        <!--<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--&lt;!&ndash; 映射 &ndash;&gt;-->
+        <!--<filter-name>struts2</filter-name >-->
+        <!--&lt;!&ndash; 匹配模式，截取任何形式的请求 &ndash;&gt;-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <!--<session-config>-->
         <!--<session-timeout>1</session-timeout>-->
