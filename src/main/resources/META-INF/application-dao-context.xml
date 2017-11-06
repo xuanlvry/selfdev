@@ -15,6 +15,11 @@
     <!-- 使用annotation定义事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <bean id="transactionTemplate"
+          class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+
     <!-- 事务管理器配置, 使用jdbc事务 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
@@ -43,7 +48,7 @@
         <property name="url"
                   value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true"/>
         <property name="username" value="root"/>
-        <property name="password" value="WZITECH_2011"/>
+        <property name="password" value="jianke"/>
 
         <!-- 连接池配置 -->
         <!-- 初始化连接大小 -->

@@ -27,8 +27,7 @@
             <if test="age != null">age = #{age},</if>
             <if test="tel != null">tel = #{tel},</if>
             <if test="sex != null">sex = #{sex},</if>
-            <if test="address != null">address = #{address},</if>
-            updateTime = current_timestamp()
+            <!--<if test="address != null">address = #{address},</if>-->
         </set>
         where id = #{id};
     </update>
