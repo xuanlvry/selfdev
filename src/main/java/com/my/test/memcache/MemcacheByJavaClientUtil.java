@@ -10,20 +10,20 @@ public class MemcacheByJavaClientUtil {
     private static MemCachedClient client;
 
     static {
-        SockIOPool pool = SockIOPool.getInstance("poolName");
-        pool.setServers(new String[]{"localhost:11211"});
-        pool.setFailover(true);
-        pool.setInitConn(10); // 设置初始连接
-        pool.setMinConn(5);   // 设置最小连接
-        pool.setMaxConn(250); // 设置最大连接
-        pool.setMaxIdle(1000 * 60 * 60 * 3); // 设置每个连接最大空闲时间3个小时
-        pool.setMaintSleep(30);
-        pool.setNagle(false);
-        pool.setSocketTO(3000);
-        pool.setAliveCheck(true);
-        pool.initialize();
+//        SockIOPool pool = SockIOPool.getInstance("poolName");
+//        pool.setServers(new String[]{"localhost:11211"});
+//        pool.setFailover(true);
+//        pool.setInitConn(10); // 设置初始连接
+//        pool.setMinConn(5);   // 设置最小连接
+//        pool.setMaxConn(250); // 设置最大连接
+//        pool.setMaxIdle(1000 * 60 * 60 * 3); // 设置每个连接最大空闲时间3个小时
+//        pool.setMaintSleep(30);
+//        pool.setNagle(false);
+//        pool.setSocketTO(3000);
+//        pool.setAliveCheck(true);
+//        pool.initialize();
 
-        client = new MemCachedClient("poolName");
+//        client = new MemCachedClient("poolName");
     }
 
     public static void add(String key, Object value) {
