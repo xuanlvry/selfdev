@@ -41,4 +41,9 @@ public class HelloController {
         myHelloServiceImpl.sayHi();
         return response;
     }
+
+    @RequestMapping(value = "normal", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public void normal(UserInfo userInfo) {
+        System.out.println("spring mvc controller处理：" + userInfo);
+    }
 }
