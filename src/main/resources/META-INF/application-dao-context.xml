@@ -40,7 +40,7 @@
 
     <!-- 扫描mappers自动配置 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.my.test"/>
+        <property name="basePackage" value="com.my.test.mybatis"/>
     </bean>
 
     <!-- 配置数据源, 使用DBCP数据库连接池 -->

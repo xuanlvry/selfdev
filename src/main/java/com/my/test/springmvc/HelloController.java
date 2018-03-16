@@ -2,6 +2,7 @@ package com.my.test.springmvc;
 
 import com.my.test.UserInfo;
 import com.my.test.common.constants.ServiceResponse;
+import com.my.test.common.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,14 @@ public class HelloController {
     }
 
     @RequestMapping(value = "normal", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public void normal(UserInfo userInfo) {
-        System.out.println("spring mvc controller处理：" + userInfo);
+    @ResponseBody
+    public UserInfo normal(UserInfo userInfo) {
+        System.out.println("spring mvc controller处理：--------------------------------");
+        try {
+            Thread.sleep(1000 * 60 * 5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return userInfo;
     }
 }

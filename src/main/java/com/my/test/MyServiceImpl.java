@@ -13,20 +13,24 @@ public class MyServiceImpl implements IMyService {
     @Autowired
     private IUserMapper userMapper;
 
+    @Override
     public UserInfo selectUser(long id) {
         UserInfo userInfo = userMapper.selectUserById(id);
         return userInfo;
     }
 
+    @Override
     public UserInfo selectUser(String account) {
         return userMapper.selectUserByAccount(account);
     }
 
+    @Override
     public void updateUser(UserInfo userInfo) {
         userMapper.updateUser(userInfo);
     }
 
     @Cacheable(value = "userInfoCache")
+    @Override
     public UserInfo selectBySpringCache(String account) {
         System.out.println("real querying db..." + account);
         return new UserInfo();

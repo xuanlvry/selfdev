@@ -9,6 +9,11 @@
     </select>
 
     <!-- 查询用户信息 -->
+    <select id="selectUserByIdForUpdate" parameterType="long" resultType="com.my.test.UserInfo">
+        SELECT * FROM user WHERE id = #{id} for update
+    </select>
+
+    <!-- 查询用户信息 -->
     <select id="selectUserByAccount" parameterType="string" resultType="com.my.test.UserInfo">
         SELECT * FROM user WHERE account = #{account}
     </select>

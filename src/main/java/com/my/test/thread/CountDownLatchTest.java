@@ -14,6 +14,7 @@ public class CountDownLatchTest implements Runnable {
         this.countDownLatch = countDownLatch;
     }
 
+    @Override
     public void run() {
         try {
             Thread.sleep(1000 * (new Random()).nextInt(3));

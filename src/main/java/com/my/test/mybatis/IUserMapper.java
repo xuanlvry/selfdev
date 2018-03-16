@@ -11,6 +11,8 @@ public interface IUserMapper {
 
     UserInfo selectUserById(Long id);
 
+    UserInfo selectUserByIdForUpdate(Long id);
+
     UserInfo selectUserByAccount(String account);
 
     Integer updateUser(UserInfo userInfo);

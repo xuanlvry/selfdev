@@ -3,9 +3,9 @@ package com.my.test.thread;
 /**
  * @author Chengfei.Sun
  */
-public class Sync {
+public class SynchronizedTest implements Runnable {
     public void test() {
-        synchronized(Sync.class){
+        synchronized(SynchronizedTest.class){
             System.out.println("test开始..");
             try {
                 Thread.sleep(1000);
@@ -14,5 +14,14 @@ public class Sync {
             }
             System.out.println("test结束..");
         }
+    }
+
+    @Override
+    public void run() {
+
+    }
+
+    public static void main(String[] args){
+
     }
 }
