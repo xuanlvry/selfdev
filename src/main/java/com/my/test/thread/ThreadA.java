@@ -10,6 +10,7 @@ public class ThreadA extends Thread {
         super(name);
     }
 
+    @Override
     public void run() {
         try {
             //1. isInterrupted()保证，只要中断标记为true就终止线程

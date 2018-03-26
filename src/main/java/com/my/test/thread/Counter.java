@@ -1,5 +1,8 @@
 package com.my.test.thread;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author Chengfei.Sun on 2016/9/30.
  */
@@ -11,6 +14,7 @@ public class Counter extends Thread{
         super(name);
     }
 
+    @Override
     public void run(){
         count ++;
     }
@@ -25,5 +29,13 @@ public class Counter extends Thread{
 
         Thread.sleep(1000);
         System.out.println(Counter.count);
+
+        Lock lock = new ReentrantLock();
+        try {
+            boolean locked = lock.tryLock();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
