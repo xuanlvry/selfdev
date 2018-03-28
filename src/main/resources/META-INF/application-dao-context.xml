@@ -209,6 +209,15 @@
     <!--<mongo:repositories base-package="com.my.test.mongo" />-->
 
 
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="4"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="keepAliveSeconds" value="200"/>
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
+        </property>
+    </bean>
+
     <!-- - - - - - - - - - - - - - - - - - - - - redis 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!--<bean id="jedisFactory"-->
           <!--class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"-->
