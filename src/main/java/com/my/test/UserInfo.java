@@ -27,4 +27,13 @@ public class UserInfo extends BaseEntity {
     private String sign;
 
     private Date createTime;
+
+    public UserInfo() {
+
+    }
+
+    public UserInfo(String account, String name) {
+        this.account = account;
+        this.name = name;
+    }
 }

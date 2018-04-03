@@ -37,42 +37,44 @@
 	<!-- 设置@AspectJ支持 -->
 	<aop:aspectj-autoproxy />
 
-	<bean id="workBeforeProxy" class="com.my.test.springaop.proxyfactorybean.WorkBeforeProxy"/>
+	<!--<bean id="workBeforeProxy" class="com.my.test.springaop.proxyfactorybean.WorkBeforeProxy"/>-->
 
-	<bean id="workMethodInterceptor" class="com.my.test.springaop.proxyfactorybean.WorkMethodInterceptor" />
+	<!--<bean id="workMethodInterceptor" class="com.my.test.springaop.proxyfactorybean.WorkMethodInterceptor" />-->
 
-	<bean id="workBeforeAfterProxy" class="com.my.test.springaop.proxyfactorybean.WorkBeforeAfterProxy" />
+	<!--<bean id="workBeforeAfterProxy" class="com.my.test.springaop.proxyfactorybean.WorkBeforeAfterProxy" />-->
 
-	<bean id="workExceptionProxy" class="com.my.test.springaop.proxyfactorybean.WorkExceptionProxy" />
+	<!--<bean id="workExceptionProxy" class="com.my.test.springaop.proxyfactorybean.WorkExceptionProxy" />-->
 
-	<bean id="workImpl" class="com.my.test.springaop.proxyfactorybean.WorkImpl"/>
+	<!--<bean id="workImpl" class="com.my.test.springaop.proxyfactorybean.WorkImpl"/>-->
 
 	<!--这个workImplProxy可以取代一个IWork的实现，这里取代的实现是workImpl-->
-	<bean id="workImplProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<!--需要代理的接口-->
-		<property name="proxyInterfaces" value="com.my.test.springaop.proxyfactorybean.IWork"/>
+	<!--<bean id="workImplProxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+		<!--&lt;!&ndash;需要代理的接口&ndash;&gt;-->
+		<!--<property name="proxyInterfaces" value="com.my.test.springaop.proxyfactorybean.IWork"/>-->
 
-		<!--需要代理的某个接口实现【被代理的目标bean】-->
-		<property name="target">
-			<ref bean="workImpl"/>
-		</property>
+		<!--&lt;!&ndash;需要代理的某个接口实现【被代理的目标bean】&ndash;&gt;-->
+		<!--<property name="target">-->
+			<!--<ref bean="workImpl"/>-->
+		<!--</property>-->
 
-		<!--当前工厂中拦截器或advisorbean的名字。拦截器，advisor，前置, 后置和异常通知对象都可以在这里被使用。-->
-		<!--这里advisor的顺序是很重要的，排在前面的优先被调用-->
-		<property name="interceptorNames">
-			<list>
-				<value>workMethodInterceptor</value>
-				<!--<value>workBeforeAfterProxy</value>-->
-				<!--<value>workExceptionProxy</value>-->
-			</list>
-		</property>
-	</bean>
+		<!--&lt;!&ndash;当前工厂中拦截器或advisorbean的名字。拦截器，advisor，前置, 后置和异常通知对象都可以在这里被使用。&ndash;&gt;-->
+		<!--&lt;!&ndash;这里advisor的顺序是很重要的，排在前面的优先被调用&ndash;&gt;-->
+		<!--<property name="interceptorNames">-->
+			<!--<list>-->
+				<!--<value>workMethodInterceptor</value>-->
+				<!--&lt;!&ndash;<value>workBeforeAfterProxy</value>&ndash;&gt;-->
+				<!--&lt;!&ndash;<value>workExceptionProxy</value>&ndash;&gt;-->
+			<!--</list>-->
+		<!--</property>-->
+	<!--</bean>-->
 
     <context:property-placeholder ignore-resource-not-found="true"
                                   location="classpath*:META-INF/application.develop.properties" file-encoding="UTF-8" />
 
     <!-- 扫描基于annotation的Spring Bean -->
     <context:component-scan base-package="com.my.test" />
+
+	<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"/>
 
 	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil"/>
 
