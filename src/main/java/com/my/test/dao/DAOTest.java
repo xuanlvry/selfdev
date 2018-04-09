@@ -19,9 +19,9 @@ public class DAOTest {
 
     @Test
     public void daoTest() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setAccount("mybatis");
-        userInfo.setName("测试mybatis注解");
-        userMapper.insert(userInfo);
+        UserInfo userInfo = userMapper.selectUserById(100052L);
+        System.out.println();
+        System.out.println(userInfo);
+        System.out.println();
     }
 }
