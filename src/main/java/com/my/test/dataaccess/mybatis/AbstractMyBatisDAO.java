@@ -70,6 +70,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#count()
      */
+    @Override
     public int count() {
         return (Integer) this.getSqlSession().selectOne(this.mapperNamespace + MyBatisPostfixConstants.COUNT);
     }
@@ -77,6 +78,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#countByMap(java.util.Map)
      */
+    @Override
     public int countByMap(Map<String, Object> queryParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -88,6 +90,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#countLikeByMap(java.util.Map)
      */
+    @Override
     public int countLikeByMap(Map<String, Object> queryParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -99,6 +102,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#insert(java.lang.Object)
      */
+    @Override
     public Object insert(T entity) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -112,6 +116,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#batchInsert(java.util.List)
      */
+    @Override
     public int batchInsert(List<T> list) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -125,6 +130,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#insertByStatement(java.lang.String, java.util.Map)
      */
+    @Override
     public int insertByStatement(String statementPostfix, Map<String, Object> insertParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -139,6 +145,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#updateById(java.lang.Object)
      */
+    @Override
     public int update(T entity) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -153,6 +160,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#batchUpdate(java.util.List)
      */
+    @Override
     public int batchUpdate(List<T> list) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -165,6 +173,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#updateById(java.io.Serializable, java.util.Map)
      */
+    @Override
     public int updateById(PK id, Map<String, Object> updateParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -179,6 +188,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#batchUpdateByIds(java.util.List, java.util.Map)
      */
+    @Override
     public int batchUpdateByIds(List<PK> ids, Map<String, Object> updateParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -194,6 +204,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#updateByStatement(java.lang.String, java.util.Map)
      */
+    @Override
     public int updateByStatement(String statementPostfix, Map<String, Object> queryParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -207,6 +218,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#delete(java.lang.Object)
      */
     @SuppressWarnings("unchecked")
+    @Override
     public int delete(T entity) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -219,6 +231,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#deleteById(java.io.Serializable)
      */
+    @Override
     public int deleteById(PK id) {
         List<PK> ids = new ArrayList<PK>();
         ids.add(id);
@@ -230,6 +243,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#batchDelete(java.util.List)
      */
     @SuppressWarnings("unchecked")
+    @Override
     public int batchDelete(List<T> list) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -247,6 +261,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#batchDeleteByIds(java.util.List)
      */
+    @Override
     public int batchDeleteByIds(List<PK> ids) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -259,6 +274,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#deleteByMap(java.util.Map)
      */
+    @Override
     public int deleteByMap(Map<String, Object> deleteParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -270,6 +286,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#deleteByStatement(java.lang.String, java.util.Map)
      */
+    @Override
     public int deleteByStatement(String statementPostfix, Map<String, Object> deleteParam) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -282,6 +299,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectById(java.io.Serializable)
      */
+    @Override
     public T selectById(PK id) {
         return this.getSqlSession().selectOne(this.mapperNamespace + MyBatisPostfixConstants.SELECT_BY_ID, id);
     }
@@ -289,6 +307,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByIds(java.util.List)
      */
+    @Override
     public List<T> selectByIds(List<PK> ids) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -301,6 +320,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectUniqueByProp(java.lang.String, java.lang.Object)
      */
+    @Override
     public T selectUniqueByProp(String propertyName, Object propertyValue) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -316,6 +336,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectByProp(java.lang.String, java.lang.Object)
      */
+    @Override
     public List<T> selectByProp(String propertyName, Object propertyValue) {
         return selectByProp(propertyName, propertyValue, "id", true);
     }
@@ -323,6 +344,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectByProp(java.lang.String, java.lang.Object, java.lang.String, boolean)
      */
+    @Override
     public List<T> selectByProp(String propertyName, Object propertyValue, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -339,6 +361,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectByProp(java.lang.String, java.lang.Object, int, int)
      */
+    @Override
     public GenericPage<T> selectByProp(String propertyName, Object propertyValue, int pageSize, int startIndex) {
         return selectByProp(propertyName, propertyValue, pageSize, startIndex, "id", true);
     }
@@ -346,6 +369,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectByProp(java.lang.String, java.lang.Object, int, int, java.lang.String, boolean)
      */
+    @Override
     public GenericPage<T> selectByProp(String propertyName, Object propertyValue, int pageSize, int startIndex, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -362,6 +386,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectAll()
      */
+    @Override
     public List<T> selectAll() {
         return selectByMap(null, "id", true);
     }
@@ -369,6 +394,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectAll(java.lang.String, boolean)
      */
+    @Override
     public List<T> selectAll(String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -380,6 +406,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectAll(int, int)
      */
+    @Override
     public GenericPage<T> selectAll(int pageSize, int startIndex) {
         return selectByMap(null, pageSize, startIndex);
     }
@@ -387,6 +414,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectAll(int, int, java.lang.String, boolean)
      */
+    @Override
     public GenericPage<T> selectAll(int pageSize, int startIndex, String orderBy, boolean isAsc) {
         return selectByMap(null, pageSize, startIndex, orderBy, isAsc);
     }
@@ -394,6 +422,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByMap(java.util.Map)
      */
+    @Override
     public List<T> selectByMap(Map<String, Object> queryParam) {
         return selectByMap(queryParam, "id", true);
     }
@@ -401,6 +430,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByMap(java.util.Map, java.lang.String, boolean)
      */
+    @Override
     public List<T> selectByMap(Map<String, Object> queryParam, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -422,6 +452,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByMap(java.util.Map, int, int)
      */
+    @Override
     public GenericPage<T> selectByMap(Map<String, Object> queryParam, int pageSize, int startIndex) {
         return selectByMap(queryParam, pageSize, startIndex, "id", true);
     }
@@ -429,6 +460,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByMap(java.util.Map, int, int, java.lang.String, boolean)
      */
+    @Override
     public GenericPage<T> selectByMap(Map<String, Object> queryParam, int pageSize, int startIndex, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -469,6 +501,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectIds(java.util.Map)
      */
+    @Override
     public List<PK> selectIds(Map<String, Object> queryParam) {
         return selectIds(queryParam, "id", true);
     }
@@ -476,6 +509,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectIds(java.util.Map, java.lang.String, boolean)
      */
+    @Override
     public List<PK> selectIds(Map<String, Object> queryParam, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -497,6 +531,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectIds(java.util.Map, int, int)
      */
+    @Override
     public GenericPage<PK> selectIds(Map<String, Object> queryParam, int pageSize, int startIndex) {
         return selectIds(queryParam, pageSize, startIndex, "id", true);
     }
@@ -504,6 +539,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectIds(java.util.Map, int, int, java.lang.String, boolean)
      */
+    @Override
     public GenericPage<PK> selectIds(Map<String, Object> queryParam, int pageSize, int startIndex, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -544,6 +580,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByStatement(java.lang.String, java.util.Map)
      */
+    @Override
     public List<T> selectByStatement(String statementPostfix, Map<String, Object> queryParam) {
         return selectByStatement(statementPostfix, queryParam, "id", true);
     }
@@ -551,6 +588,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByStatement(java.lang.String, java.util.Map, java.lang.String, boolean)
      */
+    @Override
     public List<T> selectByStatement(String statementPostfix, Map<String, Object> queryParam, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -572,6 +610,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByStatement(java.lang.String, java.util.Map, int, int)
      */
+    @Override
     public GenericPage<T> selectByStatement(String statementPostfix, Map<String, Object> queryParam, int pageSize, int startIndex) {
         return selectByStatement(statementPostfix, queryParam, pageSize, startIndex, "id", true);
     }
@@ -579,6 +618,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.mybatis.IMyBatisBaseDAO#selectByStatement(java.lang.String, java.util.Map, int, int, java.lang.String, boolean)
      */
+    @Override
     public GenericPage<T> selectByStatement(String statementPostfix, Map<String, Object> queryParam, int pageSize, int startIndex, String orderBy, boolean isAsc) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
@@ -619,6 +659,7 @@ public abstract class AbstractMyBatisDAO<T extends BaseEntity, PK extends Serial
     /* (non-Javadoc)
      * @see com.wzitech.chaos.framework.server.dataaccess.IBaseHibernateDAO#selectByNativeSql(java.lang.String)
      */
+    @Override
     public List<T> selectByNativeSql(String sql) {
         // 检查参数是否为null或者元素长度为0
         // 如果是抛出异常
