@@ -17,10 +17,13 @@ public class UserInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
     private String account;
 
+    @Column
     private String password;
 
+    @Column
     private String salt;
 
     @Column
