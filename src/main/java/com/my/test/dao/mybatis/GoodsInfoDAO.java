@@ -1,4 +1,4 @@
-package com.my.test.mybatis;
+package com.my.test.dao.mybatis;
 
 import org.apache.ibatis.annotations.Param;
 

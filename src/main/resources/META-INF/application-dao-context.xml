@@ -17,28 +17,11 @@
     <description>FACADE DAO公共配置文件</description>
 
     <!-- 使用annotation定义事务 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="jpaTransactionManager"/>
 
     <bean id="transactionTemplate"
           class="org.springframework.transaction.support.TransactionTemplate">
-        <property name="transactionManager" ref="transactionManager" />
-    </bean>
-
-    <!-- 事务管理器配置, 使用jdbc事务 -->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
-    <!-- MyBatis配置 -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:/META-INF/mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath*:/META-INF/mapper/*.xml"/>
-    </bean>
-
-    <!-- 扫描mappers自动配置 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.my.test.mybatis"/>
+        <property name="transactionManager" ref="jpaTransactionManager" />
     </bean>
 
     <!-- 配置数据源, 使用DBCP数据库连接池 -->
@@ -63,9 +46,26 @@
         <property name="maxWait" value="60000"/>
     </bean>
 
-    <!-- - - - - - - - - - - - - - - - - - - - - Spring data jpa 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - - - - - - - - mybatis 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- 事务管理器配置 -->
+    <!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
 
-    <jpa:repositories base-package="com.my.test"
+    <!-- MyBatis配置 -->
+    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="configLocation" value="classpath:/META-INF/mybatis-config.xml"/>-->
+        <!--<property name="mapperLocations" value="classpath*:/META-INF/mapper/*.xml"/>-->
+    <!--</bean>-->
+
+    <!-- 扫描mappers自动配置 -->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.my.test.mybatis"/>-->
+    <!--</bean>-->
+
+    <!-- - - - - - - - - - - - - - - - - - - - - Spring data jpa 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <jpa:repositories base-package="com.my.test.dao.springdatajpa"
                       entity-manager-factory-ref="entityManagerFactory"
                       transaction-manager-ref="jpaTransactionManager"/>
 
@@ -87,156 +87,146 @@
 
     <!-- - - - - - - - - - - - - - - - - - - - - Spring Batch 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!--<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">-->
-    <!--<property name="jobRepository" ref="jobRepository"/>-->
+        <!--<property name="jobRepository" ref="jobRepository"/>-->
     <!--</bean>-->
 
     <!--<bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">-->
-    <!--<property name="transactionManager" ref="transactionManager"/>-->
-    <!--<property name="databaseType" value="MySQL"/>-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="transactionManager" ref="transactionManager"/>-->
+        <!--<property name="databaseType" value="MySQL"/>-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
     <!--</bean>-->
 
     <!--<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">-->
-    <!--<property name="transactionManager" ref="transactionManager"/>-->
+        <!--<property name="transactionManager" ref="transactionManager"/>-->
     <!--</bean>-->
 
     <!--<bean id="itemReader" class="org.mybatis.spring.batch.MyBatisPagingItemReader" scope="step">-->
-    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
-    <!--<property name="pageSize" value="10"/>-->
-    <!--<property name="queryId" value="com.my.test.mybatis.IUserMapper.getUser"/>-->
-    <!--<property name="parameterValues">-->
-    <!--<map>-->
-    <!--<entry key="age" value="#{jobParameters['age']}"/>-->
-    <!--</map>-->
-    <!--</property>-->
+        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+        <!--<property name="pageSize" value="10"/>-->
+        <!--<property name="queryId" value="com.my.test.mybatis.IUserMapper.getUser"/>-->
+        <!--<property name="parameterValues">-->
+            <!--<map>-->
+                <!--<entry key="age" value="#{jobParameters['age']}"/>-->
+            <!--</map>-->
+        <!--</property>-->
     <!--</bean>-->
 
     <!--<util:map id="datesParameters" scope="step">-->
-    <!--<entry key="id" value="#{jobExecutionContext['id']}"/>-->
-    <!--<entry key="today" value="#{jobExecutionContext['TODAY_DATE']}"/>-->
-    <!--<entry key="first_day_of_the_month" value="#{jobExecutionContext['FIRST_DAY_OF_THE_MONTH_DATE']}"/>-->
-    <!--<entry key="first_day_of_the_previous_month"-->
-    <!--value="#{jobExecutionContext['FIRST_DAY_OF_THE_PREVIOUS_MONTH_DATE']}"/>-->
+        <!--<entry key="id" value="#{jobExecutionContext['id']}"/>-->
+        <!--<entry key="today" value="#{jobExecutionContext['TODAY_DATE']}"/>-->
+        <!--<entry key="first_day_of_the_month" value="#{jobExecutionContext['FIRST_DAY_OF_THE_MONTH_DATE']}"/>-->
+        <!--<entry key="first_day_of_the_previous_month"-->
+               <!--value="#{jobExecutionContext['FIRST_DAY_OF_THE_PREVIOUS_MONTH_DATE']}"/>-->
     <!--</util:map>-->
 
     <!--<bean id="itemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader" scope="step">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--<property name="sql" value="select * from user"/>-->
-    <!--<property name="rowMapper">-->
-    <!--<bean class="com.my.test.springbatch.UserRowMapper"/>-->
-    <!--</property>-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="sql" value="select * from user"/>-->
+        <!--<property name="rowMapper">-->
+            <!--<bean class="com.my.test.springbatch.UserRowMapper"/>-->
+        <!--</property>-->
     <!--</bean>-->
 
     <!--<bean id="itemReader" class="org.springframework.batch.item.database.JdbcPagingItemReader" scope="step">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--<property name="queryProvider">-->
-    <!--<bean class="org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--<property name="selectClause" value="select *"/>-->
-    <!--<property name="fromClause" value="from user"/>-->
-    <!--<property name="whereClause" value="where age>:age"/>-->
-    <!--<property name="sortKey" value="id"/>-->
-    <!--</bean>-->
-    <!--</property>-->
-    <!--<property name="parameterValues">-->
-    <!--<map>-->
-    <!--<entry key="age" value="#{jobParameters['age']}"/>-->
-    <!--</map>-->
-    <!--</property>-->
-    <!--<property name="pageSize" value="3"/>-->
-    <!--<property name="rowMapper">-->
-    <!--<bean class="com.my.test.springbatch.UserRowMapper"/>-->
-    <!--</property>-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="queryProvider">-->
+            <!--<bean class="org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean">-->
+                <!--<property name="dataSource" ref="dataSource"/>-->
+                <!--<property name="selectClause" value="select *"/>-->
+                <!--<property name="fromClause" value="from user"/>-->
+                <!--<property name="whereClause" value="where age>:age"/>-->
+                <!--<property name="sortKey" value="id"/>-->
+            <!--</bean>-->
+        <!--</property>-->
+        <!--<property name="parameterValues">-->
+            <!--<map>-->
+                <!--<entry key="age" value="#{jobParameters['age']}"/>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="pageSize" value="3"/>-->
+        <!--<property name="rowMapper">-->
+            <!--<bean class="com.my.test.springbatch.UserRowMapper"/>-->
+        <!--</property>-->
     <!--</bean>-->
 
     <!--<bean id="itemWriter" class="org.mybatis.spring.batch.MyBatisBatchItemWriter" scope="prototype">-->
-    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
-    <!--<property name="statementId" value="com.my.test.mybatis.IUserMapper.updateUser"/>-->
+        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+        <!--<property name="statementId" value="com.my.test.mybatis.IUserMapper.updateUser"/>-->
     <!--</bean>-->
 
     <!--<bean id="testProcessor" class="com.my.test.springbatch.TestProcessor"/>-->
     <!--<bean id="testWriter" class="com.my.test.springbatch.TestWriter"/>-->
 
     <!--<batch:job id="testjob">-->
-    <!--<batch:step id="step1">-->
-    <!--<tasklet>-->
-    <!--<chunk reader="itemReader" processor="testProcessor" writer="testWriter" commit-interval="2"/>-->
-    <!--</tasklet>-->
-    <!--</batch:step>-->
+        <!--<batch:step id="step1">-->
+            <!--<tasklet>-->
+                <!--<chunk reader="itemReader" processor="testProcessor" writer="testWriter" commit-interval="2"/>-->
+            <!--</tasklet>-->
+        <!--</batch:step>-->
     <!--</batch:job>-->
 
     <!-- - - - - - - - - - - - - - - - - - - - - Hibernate 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- 定义事务管理 -->
     <!--<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
-    <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
     <!--</bean>-->
 
     <!--<aop:config>-->
-    <!--<aop:pointcut id="txPointcut" expression="execution(* com.my.test.hibernate..*.*(..))"/>-->
-    <!--<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>-->
+        <!--<aop:pointcut id="txPointcut" expression="execution(* com.my.test.hibernate..*.*(..))"/>-->
+        <!--<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>-->
     <!--</aop:config>-->
 
     <!--<tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">-->
-    <!--<tx:attributes>-->
-    <!--&lt;!&ndash; name 为 方法名 &ndash;&gt;-->
-    <!--<tx:method name="get*" read-only="true"/>-->
-    <!--<tx:method name="list*" read-only="true"/>-->
-    <!--<tx:method name="**" propagation="REQUIRED"/>-->
-    <!--</tx:attributes>-->
+        <!--<tx:attributes>-->
+            <!--&lt;!&ndash; name 为 方法名 &ndash;&gt;-->
+            <!--<tx:method name="get*" read-only="true"/>-->
+            <!--<tx:method name="list*" read-only="true"/>-->
+            <!--<tx:method name="**" propagation="REQUIRED"/>-->
+        <!--</tx:attributes>-->
     <!--</tx:advice>-->
 
     <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--<property name="packagesToScan">-->
-    <!--&lt;!&ndash;设置spring去哪个包中查找相应的实体类&ndash;&gt;-->
-    <!--<list>-->
-    <!--<value>com.my.test</value>-->
-    <!--</list>-->
-    <!--</property>-->
-    <!--<property name="hibernateProperties">-->
-    <!--<value>-->
-    <!--&lt;!&ndash; 数据源的不同，这里的dialect也不一样 &ndash;&gt;-->
-    <!--hibernate.dialect=org.hibernate.dialect.MySQLDialect-->
-    <!--hibernate.show_sql=true-->
-    <!--hibernate.format_sql=true-->
-    <!--hibernate.hbm2ddl.auto=none-->
-    <!--hibernate.jdbc.batch_size=20-->
-    <!--hibernate.validator.apply_to_ddl=false-->
-    <!--hibernate.validator.autoregister_listeners=false-->
-    <!--</value>-->
-    <!--</property>-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="packagesToScan">-->
+            <!--&lt;!&ndash;设置spring去哪个包中查找相应的实体类&ndash;&gt;-->
+            <!--<list>-->
+                <!--<value>com.my.test</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<value>-->
+                <!--&lt;!&ndash; 数据源的不同，这里的dialect也不一样 &ndash;&gt;-->
+                <!--hibernate.dialect=org.hibernate.dialect.MySQLDialect-->
+                <!--hibernate.show_sql=true-->
+                <!--hibernate.format_sql=true-->
+                <!--hibernate.hbm2ddl.auto=none-->
+                <!--hibernate.jdbc.batch_size=20-->
+                <!--hibernate.validator.apply_to_ddl=false-->
+                <!--hibernate.validator.autoregister_listeners=false-->
+            <!--</value>-->
+        <!--</property>-->
     <!--</bean>-->
 
     <!-- - - - - - - - - - - - - - - - - - - - - MongoDB 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!--<mongo:mongo id="mongo" host="${mongodb.host}" port="${mongodb.port}" />-->
+    <!--<mongo:mongo id="mongo" host="${mongodb.host}" port="${mongodb.port}"/>-->
 
-    <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate" >-->
-    <!--<constructor-arg ref="mongo" />-->
-    <!--<constructor-arg name="databaseName" value="mytest" />-->
+    <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
+        <!--<constructor-arg ref="mongo"/>-->
+        <!--<constructor-arg name="databaseName" value="mytest"/>-->
     <!--</bean>-->
 
     <!--<mongo:db-factory id="mongoDbFactory" dbname="mytest" mongo-ref="mongo"/>-->
 
     <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
-    <!--<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>-->
+        <!--<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>-->
     <!--</bean>-->
 
     <!--<mongo:repositories base-package="com.my.test.mongo">-->
-    <!--<mongo:repository id="accountDao" />-->
+        <!--<mongo:repository id="accountDao"/>-->
     <!--</mongo:repositories>-->
     <!--<bean id="userInfoDAO" class="com.my.test.mongo.UserInfoDAO"/>-->
 
-    <!--<mongo:repositories base-package="com.my.test.mongo" />-->
-
-
-    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-        <property name="corePoolSize" value="4"/>
-        <property name="maxPoolSize" value="100"/>
-        <property name="keepAliveSeconds" value="200"/>
-        <property name="rejectedExecutionHandler">
-            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
-        </property>
-    </bean>
+    <!--<mongo:repositories base-package="com.my.test.mongo"/>-->
 
     <!-- - - - - - - - - - - - - - - - - - - - - redis 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!--<bean id="jedisFactory"-->

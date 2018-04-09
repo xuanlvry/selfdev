@@ -78,6 +78,16 @@
 
 	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil"/>
 
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="4"/>
+		<property name="maxPoolSize" value="100"/>
+		<property name="keepAliveSeconds" value="200"/>
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
+		</property>
+	</bean>
+
+
 	<!-- 启用缓存注解功能。指定一个默认的cacheManager，否则需要在注解使用时指定cache-Manager="xxx" -->
 	<!-- 另外还可以指定一个 key-generator，即默认的key生成策略 -->
 	<cache:annotation-driven cache-manager="cacheManager"/>
@@ -104,9 +114,6 @@
 			<!--</set>-->
 		<!--</property>-->
 	<!--</bean>-->
-
-
-
 
 	<!-- - - - - - - - - - - - - - - - - - - - - Quartz 测试 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!--配置作业类-->

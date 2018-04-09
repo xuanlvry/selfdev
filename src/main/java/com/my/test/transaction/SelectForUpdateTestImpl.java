@@ -1,6 +1,6 @@
 package com.my.test.transaction;
 
-import com.my.test.mybatis.IUserMapper;
+import com.my.test.dao.mybatis.IUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;

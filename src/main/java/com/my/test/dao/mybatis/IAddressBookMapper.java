@@ -1,4 +1,4 @@
-package com.my.test.mybatis;
+package com.my.test.dao.mybatis;
 
 import com.my.test.AddressBookInfo;
 

@@ -2,7 +2,7 @@ package com.my.test.springstransaction;
 
 import com.my.test.IMyService;
 import com.my.test.UserInfo;
-import com.my.test.mybatis.IUserMapper;
+import com.my.test.dao.mybatis.IUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
