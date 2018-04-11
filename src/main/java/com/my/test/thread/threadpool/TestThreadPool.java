@@ -31,10 +31,10 @@ public class TestThreadPool {
         /**
          * 原生多线程
          */
-        FutureTask<UserInfo> task1 = new FutureTask<UserInfo>(new UserTask());
+        FutureTask<Object> task1 = new FutureTask<Object>(new UserTask());
         new Thread(task1).start();
 
-        FutureTask<GoodsInfo> task2 = new FutureTask<GoodsInfo>(new GoodsTask());
+        FutureTask<Object> task2 = new FutureTask<Object>(new GoodsTask());
         new Thread(task2).start();
 
         System.out.println(task1.get());
@@ -42,9 +42,9 @@ public class TestThreadPool {
     }
 
     //任务类
-    private class UserTask implements Callable<UserInfo> {
+    private class UserTask implements Callable<Object> {
         @Override
-        public UserInfo call() throws Exception {
+        public Object call() throws Exception {
             UserInfo userInfo = new UserInfo();
             userInfo.setName("tom");
             userInfo.setSex(1);
@@ -52,9 +52,9 @@ public class TestThreadPool {
         }
     }
 
-    private class GoodsTask implements Callable<GoodsInfo> {
+    private class GoodsTask implements Callable<Object> {
         @Override
-        public GoodsInfo call() throws Exception {
+        public Object call() throws Exception {
             GoodsInfo goodsInfo = new GoodsInfo();
             goodsInfo.setGoodsName("iphonex");
             return goodsInfo;
