@@ -1,4 +1,4 @@
-package com.my.test.springmvc;
+package com.my.test.exception;
 
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;

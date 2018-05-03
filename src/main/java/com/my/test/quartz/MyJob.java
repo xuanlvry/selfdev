@@ -22,13 +22,16 @@ public class MyJob extends QuartzJobBean {
         this.str = str;
     }
 
+    @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         System.out.println("work1 " + Thread.currentThread().getName() + ": 计划任务执行：" + this.str);
     }
 
     @Scheduled(cron = "*/1 * * * * ?")
     public void doTask() throws InterruptedException {
-        Thread.sleep(2000);
+//        System.out.println(new Date() + "work1 start");
+
+//        Thread.sleep(2000);
         System.out.println(new Date() + " work1 " + Thread.currentThread().getName() +": 计划任务执行");
     }
 }

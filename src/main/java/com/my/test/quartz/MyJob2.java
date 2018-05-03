@@ -14,6 +14,19 @@ import java.util.Date;
 public class MyJob2 {
     @Scheduled(cron = "*/1 * * * * ?")
     public void doTask() {
-        System.out.println(new Date() + " work2 " + Thread.currentThread().getName() +": 计划任务执行");
+        Date start = new Date();
+        System.out.println(start + " ---work2--- " + Thread.currentThread().getName() +"start");
+
+        while ((new Date()).getTime() - start.getTime() <= 3000) {
+
+        }
+
+        System.out.println(new Date() + " ---work2--- " + Thread.currentThread().getName() +": 计划任务执行");
+    }
+
+    @Scheduled(cron = "*/1 * * * * ?")
+    public void doTask3() {
+        System.out.println(new Date() + " work3 " + Thread.currentThread().getName() +": 计划任务执行");
     }
 }
+

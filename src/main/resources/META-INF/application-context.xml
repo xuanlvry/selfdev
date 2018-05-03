@@ -175,9 +175,9 @@
 		<!--<property name="keepAliveSeconds" value="60" />-->
 	<!--</bean>-->
 
-    <!-- - - - - - - - - - - - - - - - - - - - - Spring - task 测试 - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- - - - - - - - - - - - - - - - - - - - - Spring - task 测试 - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- 开启@Scheduled注解 -->
-	<!--<task:executor id="executor" pool-size="2" />-->
+	<!--<task:executor id="executor" pool-size="3" rejection-policy="ABORT" />-->
 	<!--<task:scheduler id="scheduler" pool-size="1" />-->
 	<!--<task:annotation-driven executor="executor" scheduler="scheduler" />-->
 
