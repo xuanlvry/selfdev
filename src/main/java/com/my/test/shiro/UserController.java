@@ -19,7 +19,7 @@ import java.util.Collection;
 /**
  * @author Chengfei.Sun on 16/11/11.
  */
-@Controller("userController")
+@Controller("userShiroController")
 @RequestMapping("user")
 public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.GET, produces = "application/json; charset=utf-8")

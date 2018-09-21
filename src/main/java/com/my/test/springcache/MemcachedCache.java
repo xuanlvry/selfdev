@@ -16,14 +16,17 @@ public class MemcachedCache implements Cache {
     private String name;            //对应xml中property配置p:name
     private int exp = 3600;         //对应xml中property配置p:exp
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public Object getNativeCache() {
         return client;
     }
 
+    @Override
     public ValueWrapper get(Object o) {
         Object object = null;
         try {
@@ -38,6 +41,7 @@ public class MemcachedCache implements Cache {
         return (object != null ? new SimpleValueWrapper(object) : null);
     }
 
+    @Override
     public <T> T get(Object o, Class<T> aClass) {
         Object object = null;
         try {
@@ -52,10 +56,12 @@ public class MemcachedCache implements Cache {
         return (T) object;
     }
 
+    @Override
     public <T> T get(Object o, Callable<T> callable) {
         return null;
     }
 
+    @Override
     public void put(Object o, Object o1) {
         try {
             client.set((String) o, exp, o1);
@@ -68,11 +74,13 @@ public class MemcachedCache implements Cache {
         }
     }
 
+    @Override
     public ValueWrapper putIfAbsent(Object o, Object o1) {
         put(o, o1);
         return get(o1);
     }
 
+    @Override
     public void evict(Object o) {
         try {
             client.delete((String) o);
@@ -85,6 +93,7 @@ public class MemcachedCache implements Cache {
         }
     }
 
+    @Override
     public void clear() {
         try {
             client.flushAll();

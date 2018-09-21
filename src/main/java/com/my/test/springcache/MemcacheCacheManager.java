@@ -11,6 +11,7 @@ import java.util.Collection;
 public class MemcacheCacheManager extends AbstractCacheManager {
     private Collection<MemcachedCache> caches;
 
+    @Override
     protected Collection<? extends Cache> loadCaches() {
         return caches;
     }

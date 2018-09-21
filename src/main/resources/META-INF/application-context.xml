@@ -72,7 +72,9 @@
                                   location="classpath*:META-INF/application.develop.properties" file-encoding="UTF-8" />
 
     <!-- 扫描基于annotation的Spring Bean -->
-    <context:component-scan base-package="com.my.test" />
+	<context:component-scan base-package="com.my.test" >
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 
 	<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"/>
 
@@ -87,10 +89,19 @@
 		</property>
 	</bean>
 
-
+	<!-- - - - - - - - - - - - - - - - - - - - - Spring cache - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<!-- 启用缓存注解功能。指定一个默认的cacheManager，否则需要在注解使用时指定cache-Manager="xxx" -->
 	<!-- 另外还可以指定一个 key-generator，即默认的key生成策略 -->
 	<cache:annotation-driven cache-manager="cacheManager"/>
+
+	<!-- 配置RedisCacheManager -->
+	<!--<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">-->
+		<!--<constructor-arg name="redisOperations" ref="redisTemplate"/>-->
+		<!--&lt;!&ndash;&lt;!&ndash; 过期时间，不设置默认为0（永不过期） &ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="defaultExpiration" value="300000"/>&ndash;&gt;-->
+		<!--&lt;!&ndash;&lt;!&ndash; 支持事务，默认false &ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="transactionAware" value="true"/>&ndash;&gt;-->
+	<!--</bean>-->
 
 	<!--配置Spring内置缓存的缓存管理器-->
 	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">

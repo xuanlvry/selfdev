@@ -17,13 +17,14 @@ public class SpringCacheController {
     @Autowired
     private IMyService myServiceImpl;
 
-    @RequestMapping(value = "select", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "select", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select() {
+        UserInfo userInfo = myServiceImpl.selectUser("jack");
         return myServiceImpl.selectBySpringCache("jack");
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "update", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String update(UserInfo userInfo) {
         myServiceImpl.updateUser(userInfo);

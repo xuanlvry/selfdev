@@ -1,0 +1,14 @@
+package com.my.test.modulebuilder.vo;
+
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by sunchengfei on 2018/4/3.
+ */
+@Data
+public class OrderPriceInfo {
+    private BigDecimal price;
+    private BigDecimal originPrice;
+}

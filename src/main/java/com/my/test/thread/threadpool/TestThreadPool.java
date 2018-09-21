@@ -2,15 +2,14 @@ package com.my.test.thread.threadpool;
 
 import com.my.test.GoodsInfo;
 import com.my.test.UserInfo;
-import com.my.test.thread.other.TaskExecutor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created by Chengfei.Sun on 17/03/03.

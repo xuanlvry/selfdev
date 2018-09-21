@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -25,6 +26,7 @@ public class RedissonDemo {
 
         for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
+                @Override
                 public void run() {
                     try {
                         RLock lock = redissonClient.getLock("anylock");

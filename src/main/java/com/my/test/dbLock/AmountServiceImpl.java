@@ -20,6 +20,7 @@ public class AmountServiceImpl implements IAmountService{
     private DBLockDAO dbLockDAO;
 
     @Transactional
+    @Override
     public void transfer(String threadName) {
         try {
 //            dbLockDAO.begin();

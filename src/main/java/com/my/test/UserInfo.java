@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Chengfei.Sun
@@ -33,7 +34,7 @@ public class UserInfo implements Serializable {
     private int age;
 
     @Column
-    private String tel;
+    private List<String> tels;
 
     @Column
     private int sex;

@@ -7,4 +7,13 @@
         <!--开启二级缓存-->
         <setting name="cacheEnabled" value="false"/>
     </settings>
+
+    <typeHandlers>
+        <typeHandler javaType="java.util.List" jdbcType="VARCHAR" handler="com.my.test.dao.mybatis.typehandler.ListStringTypeHandler"/>
+    </typeHandlers>
+
+    <!-- 关联包下的 接口类-->
+    <mappers>
+        <mapper class="com.my.test.dao.mybatis.IUserMapper"/>
+    </mappers>
 </configuration>
