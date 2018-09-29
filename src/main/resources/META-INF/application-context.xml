@@ -78,7 +78,7 @@
 
 	<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"/>
 
-	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil"/>
+	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil" lazy-init="false"/>
 
 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="4"/>

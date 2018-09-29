@@ -623,6 +623,14 @@
             <artifactId>emoji-java</artifactId>
             <version>4.0.0</version>
         </dependency>
+
+        <!--quasar协程-->
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-core</artifactId>
+            <version>0.7.9</version>
+            <classifier>jdk8</classifier><!--java8版本专用参数（java7不需要）-->
+        </dependency>
     </dependencies>
 
     <build>
@@ -635,6 +643,24 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <!--quasar协程AOT编译期 instrument 插件-->
+            <plugin>
+                <groupId>com.vlkan</groupId>
+                <artifactId>quasar-maven-plugin</artifactId>
+                <version>0.7.9</version>
+                <configuration>
+                    <check>true</check>
+                    <debug>true</debug>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

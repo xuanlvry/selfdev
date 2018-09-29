@@ -33,9 +33,9 @@ public class DAOTest {
         userInfo.setName("测试typehandler" + new Date());
         userInfo.setTels(Arrays.asList("13456785678","13590909090"));
 
-//        userMapper.insert(userInfo);
+        userMapper.insert(userInfo);
 
-        userInfo = userMapper.selectUserById(2255267L);
+//        userInfo = userMapper.selectUserById(2255267L);
         System.out.println("---------------" + userInfo + "-------------------");
     }
 
@@ -43,7 +43,7 @@ public class DAOTest {
     public void insertTest() {
         ExecutorService executor = Executors.newFixedThreadPool(200);
 
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 200000; i++) {
             executor.submit(new Worker(userMapper));
         }
 
