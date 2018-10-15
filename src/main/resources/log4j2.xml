@@ -8,19 +8,19 @@
     </appenders>
 
     <loggers>
-        <logger name="java.sql" level="debug" additivity="false">
+        <logger name="java.sql" level="info" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
 
-        <logger name="org.springframework.orm" level="debug" additivity="false">
+        <logger name="org.springframework.orm" level="info" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
 
-        <logger name="com.dianping.baby.card" level="debug" additivity="false">
+        <logger name="com.dianping.baby.card" level="info" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
 
-        <root level="debug">
+        <root level="info">
             <appender-ref ref="Console"/>
         </root>
     </loggers>

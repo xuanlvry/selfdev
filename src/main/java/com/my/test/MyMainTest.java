@@ -1,25 +1,13 @@
 package com.my.test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import com.google.common.util.concurrent.RateLimiter;
 
 /**
  * Created by sunchengfei on 2018/6/5.
  */
 public class MyMainTest {
     public static void main(String[] args) {
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            dayFormat.parse("1999-12-12");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        int month = c.get(Calendar.MONTH);
-        System.out.println("month = " + month);
+        RateLimiter rateLimiter = RateLimiter.create(10);
+        rateLimiter.acquire();
     }
 }
