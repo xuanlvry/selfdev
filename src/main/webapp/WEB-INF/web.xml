@@ -17,6 +17,8 @@
     <context-param>
         <description>Spring Configuration File</description>
         <param-name>contextConfigLocation</param-name>
+        <!-- 指定Spring配置文件所在目录 -->
+        <!-- 如果没有该配置，则spring会去加载/WEB-INF/applicationContext.xml -->
         <param-value>
             classpath:/META-INF/application-context.xml,
             classpath:/META-INF/application-dao-context.xml
@@ -26,7 +28,7 @@
     </context-param>
 
     <listener>
-        <!--Spring ApplicationContext 载入 -->
+        <!-- Spring配置 ContextLoaderListener的作用就是启动Web容器时，自动装配ApplicationContext的配置信息 -->
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 

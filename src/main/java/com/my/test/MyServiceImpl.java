@@ -1,18 +1,26 @@
 package com.my.test;
 
 import com.my.test.dao.mybatis.IUserMapper;
+import com.my.test.redis.UserRedisDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Chengfei.Sun on 17/03/28.
  */
 @Service
+@Lazy(value = false)
 public class MyServiceImpl implements IMyService {
     @Autowired
     private IUserMapper userMapper;
+
+    @Resource
+    private UserRedisDAO userRedisDAO;
 
     @Override
     public UserInfo selectUser(long id) {
