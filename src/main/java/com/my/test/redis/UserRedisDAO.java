@@ -8,10 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRedisDAO {
     public void insert(String key, String value) {
-
+        System.out.println("UserRedisDAO insert..");
     }
 
     public String query(String key) {
-        return null;
+        System.out.println("UserRedisDAO query..");
+        return "hello world";
     }
 }
