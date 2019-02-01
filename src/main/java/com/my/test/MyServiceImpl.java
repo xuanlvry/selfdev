@@ -4,6 +4,7 @@ import com.my.test.dao.GoodsInfoService;
 import com.my.test.dao.mybatis.IUserMapper;
 import com.my.test.redis.UserRedisDAO;
 import lombok.Setter;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
@@ -19,7 +20,7 @@ import javax.annotation.Resource;
  */
 @Service
 @Lazy(value = true)
-public class MyServiceImpl implements IMyService {
+public class MyServiceImpl implements IMyService, InitializingBean {
     @Autowired
     private IUserMapper userMapper;
 
@@ -85,11 +86,6 @@ public class MyServiceImpl implements IMyService {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("myServiceImpl afterPropertiesSet method");
-    }
-
-    @Override
-    public void destroy() throws Exception {
-
     }
 
 }
