@@ -3,12 +3,15 @@ package com.my.test;
 import com.my.test.dao.GoodsInfoService;
 import com.my.test.dao.mybatis.IUserMapper;
 import com.my.test.redis.UserRedisDAO;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**
@@ -26,13 +29,38 @@ public class MyServiceImpl implements IMyService {
     @Autowired
     private GoodsInfoService goodsInfoService;
 
+    @Value("${default.name}")
+    private String defaultName;
+
+    @Setter
+    private String name;
+
+    private Long id;
+
+    public MyServiceImpl() {
+        System.out.println("myServiceImpl无参构造");
+    }
+
+    static {
+        System.out.println("myServiceImpl static method");
+    }
+
+    public void init2() {
+        System.out.println("myServiceImpl init2 method");
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("myServiceImpl postConstruct method");
+    }
+
     @Override
     public UserInfo selectUser(long id) {
         UserInfo userInfo = userMapper.selectUserById(id);
         return userInfo;
     }
 
-    @Cacheable(value="accountCache")
+    @Cacheable(value = "accountCache")
     @Override
     public UserInfo selectUser(String account) {
         System.out.println("accountCache: real querying db..." + account);
@@ -41,16 +69,27 @@ public class MyServiceImpl implements IMyService {
         return userMapper.selectUserByAccount(account);
     }
 
-    @CacheEvict(value="accountCache", key="#p0.account", allEntries = false)
+    @CacheEvict(value = "accountCache", key = "#p0.account", allEntries = false)
     @Override
     public void updateUser(UserInfo userInfo) {
         userMapper.updateUser(userInfo);
     }
 
-    @Cacheable(value="default")
+    @Cacheable(value = "default")
     @Override
     public UserInfo selectBySpringCache(String account) {
         System.out.println("default: real querying db..." + account);
         return userMapper.selectUserByAccount(account);
     }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("myServiceImpl afterPropertiesSet method");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+
+    }
+
 }

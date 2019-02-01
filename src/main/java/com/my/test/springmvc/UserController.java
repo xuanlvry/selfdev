@@ -31,4 +31,18 @@ public class UserController {
         }
         return response;
     }
+
+    @RequestMapping(value = "query", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public ServiceResponse query(String account) {
+        ServiceResponse response = new ServiceResponse();
+        try {
+            UserInfo userInfo = myServiceImpl.selectUser("f28L3M1re5");
+            response.setObject(userInfo);
+        } catch (Exception e) {
+            response.setCode("9999");
+            response.setMessage("服务器异常");
+        }
+        return response;
+    }
 }

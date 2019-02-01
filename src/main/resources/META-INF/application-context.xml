@@ -80,6 +80,10 @@
 
 	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil" lazy-init="false"/>
 
+	<!--<bean id="myServiceImpl" class="com.my.test.MyServiceImpl" init-method="init2" lazy-init="true">-->
+		<!--<property name="name" value="propertyName"/>-->
+	<!--</bean>-->
+
 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="4"/>
 		<property name="maxPoolSize" value="100"/>
