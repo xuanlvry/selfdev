@@ -1,7 +1,5 @@
 package com.my.test.common.constants;
 
-import com.my.test.common.enums.CommonResponseCodes;
-
 /**
  * @author Chengfei.Sun on 16/11/14.
  */
@@ -11,18 +9,12 @@ public class ServiceResponse {
     private Object object;
 
     public ServiceResponse() {
-        this.code = CommonResponseCodes.Success.getCode();
-        this.message = CommonResponseCodes.Success.getMessage();
+
     }
 
     public ServiceResponse(String code, String message) {
         this.code = code;
         this.message = message;
-    }
-
-    public void setResponse(CommonResponseCodes commonResponseCodes) {
-        this.code = commonResponseCodes.getCode();
-        this.message = commonResponseCodes.getMessage();
     }
 
     public void setResponse(String code, String message) {

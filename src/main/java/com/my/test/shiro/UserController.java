@@ -2,12 +2,10 @@ package com.my.test.shiro;
 
 import com.my.test.UserInfo;
 import com.my.test.common.constants.ServiceResponse;
-import com.my.test.common.enums.CommonResponseCodes;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +36,6 @@ public class UserController {
             System.out.println("对用户[" + userInfo.getAccount() + "]进行登录验证..验证通过");
         } catch (Exception e) {
             e.printStackTrace();
-            serviceResponse.setResponse(CommonResponseCodes.Fail);
         }
         return serviceResponse;
     }
