@@ -245,6 +245,12 @@
         </dependency>
         <!-- common utils end -->
 
+        <dependency>
+            <groupId>org.jboss.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>3.6.3.Final</version>
+        </dependency>
+
         <!-- spring start -->
         <dependency>
             <groupId>org.springframework</groupId>
