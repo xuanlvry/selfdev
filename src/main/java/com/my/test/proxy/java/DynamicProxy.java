@@ -1,6 +1,6 @@
-package com.my.test.javaproxy;
+package com.my.test.proxy.java;
 
-import com.my.test.javaproxy.staticproxy.ISubject;
+import com.my.test.proxy.staticproxy.ISubject;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

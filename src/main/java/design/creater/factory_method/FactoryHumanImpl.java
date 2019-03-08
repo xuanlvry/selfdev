@@ -7,7 +7,7 @@ public class FactoryHumanImpl implements FactoryHuman {
     public <T extends Human> T createHuman(Class<T> c) {
         Human human = null;
         try {
-            human = (T) Class.forName(c.getName()).newInstance();
+            human = c.newInstance();
         } catch (Exception e) {
             System.out.println("人类生成错误");
         }
