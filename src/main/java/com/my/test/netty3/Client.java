@@ -1,4 +1,4 @@
-package com.my.test.netty;
+package com.my.test.netty3;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.*;
@@ -16,14 +16,14 @@ import java.util.concurrent.Executors;
  */
 public class Client {
     public static void main(String[] args) {
-        // 服务类
+        //服务类
         ClientBootstrap bootstrap = new ClientBootstrap();
-        // 线程池
+        //线程池
         ExecutorService boss = Executors.newCachedThreadPool();
         ExecutorService worker = Executors.newCachedThreadPool();
-        // socket工厂
+        //socket工厂
         bootstrap.setFactory(new NioClientSocketChannelFactory(boss, worker));
-        // 管道工厂
+        //管道工厂
         bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
             @Override
             public ChannelPipeline getPipeline() throws Exception {
@@ -35,10 +35,11 @@ public class Client {
             }
         });
 
-        // 连接服务端
+        //连接服务端
         ChannelFuture connect = bootstrap.connect(new InetSocketAddress(
                 "127.0.0.1", 10101));
         Channel channel = connect.getChannel();
+        channel.write("发送内容");
         System.out.println("client start");
 
         Scanner scanner = new Scanner(System.in);

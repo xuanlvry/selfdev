@@ -1,4 +1,4 @@
-package com.my.test.netty;
+package com.my.test.netty3;
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelPipeline;
@@ -17,14 +17,14 @@ import java.util.concurrent.Executors;
  */
 public class Server {
     public static void main(String[] args) {
-        // 服务类
+        //服务类
         ServerBootstrap bootstrap = new ServerBootstrap();
-        // boss线程监听端口，worker线程负责数据读写
+        //boss线程监听端口，worker线程负责数据读写
         ExecutorService boss = Executors.newCachedThreadPool();
         ExecutorService worker = Executors.newCachedThreadPool();
-        // 设置niosocket工厂
+        //设置niosocket工厂
         bootstrap.setFactory(new NioServerSocketChannelFactory(boss, worker));
-        // 设置管道的工厂
+        //设置管道工厂
         bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
             @Override
             public ChannelPipeline getPipeline() throws Exception {
@@ -35,6 +35,7 @@ public class Server {
                 return pipeline;
             }
         });
+        //启动
         bootstrap.bind(new InetSocketAddress(10101));
         System.out.println("server1 start!!!");
     }

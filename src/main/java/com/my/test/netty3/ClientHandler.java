@@ -1,4 +1,4 @@
-package com.my.test.netty;
+package com.my.test.netty3;
 
 import org.jboss.netty.channel.*;
 
