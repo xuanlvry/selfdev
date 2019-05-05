@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"
-	   default-lazy-init="true">
+	   default-lazy-init="false">
 
 	<!--&lt;!&ndash;SimpleMappingExceptionResolver&ndash;&gt;-->
 	<!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
@@ -74,9 +74,9 @@
 
 	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil" lazy-init="false"/>
 
-	<!--<bean id="myServiceImpl" class="com.my.test.MyServiceImpl" init-method="init2" lazy-init="true">-->
-		<!--<property name="name" value="propertyName"/>-->
-	<!--</bean>-->
+	<bean id="myServiceImpl" class="com.my.test.MyServiceImpl" init-method="init2" lazy-init="false" destroy-method="closeTest">
+		<property name="name" value="propertyName"/>
+	</bean>
 
 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="4"/>

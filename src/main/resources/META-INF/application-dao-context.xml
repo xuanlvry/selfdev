@@ -230,13 +230,18 @@
     <!--<mongo:repositories base-package="com.my.test.mongo"/>-->
 
     <!-- - - - - - - - - - - - - - - - - - - - - redis 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <bean id="jedisFactory"
-          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-          p:host-name="172.16.89.132" p:port="6379" p:use-pool="true"/>
+    <!--<bean id="jedisFactory"-->
+          <!--class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"-->
+          <!--p:host-name="172.16.89.132" p:port="6379" p:use-pool="true"/>-->
 
     <!-- User Redis Template配置 -->
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
-          p:connection-factory-ref="jedisFactory"/>
+    <!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"-->
+          <!--p:connection-factory-ref="jedisFactory"/>-->
+
+    <!-- redisson单机最基本配置 -->
+    <redisson:client>
+        <redisson:single-server address="redis://172.16.89.132:6379"/>
+    </redisson:client>
 
     <!--<redisson:client>-->
         <!--<redisson:cluster-servers>-->
