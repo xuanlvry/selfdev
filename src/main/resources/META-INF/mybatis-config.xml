@@ -12,8 +12,7 @@
         <typeHandler javaType="java.util.List" jdbcType="VARCHAR" handler="com.my.test.dao.mybatis.typehandler.ListStringTypeHandler"/>
     </typeHandlers>
 
-    <!-- 关联包下的 接口类-->
-    <mappers>
-        <mapper class="com.my.test.dao.mybatis.IUserMapper"/>
-    </mappers>
+<!--    <mappers>-->
+<!--        <mapper class="com.my.test.dao.mybatis.IUserMapper"/>-->
+<!--    </mappers>-->
 </configuration>

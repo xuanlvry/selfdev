@@ -57,12 +57,12 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:/META-INF/mybatis-config.xml"/>
-        <!--<property name="mapperLocations" value="classpath*:/META-INF/mapper/*.xml"/>-->
+        <property name="mapperLocations" value="classpath:/META-INF/mapper/*.xml"/>
     </bean>
 
     <!-- 扫描mappers自动配置 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.my.test.dao.mybatis;com.my.test.dbLock"/>
+        <property name="basePackage" value="com.my.test.dao.mybatis"/>
     </bean>
 
     <!-- - - - - - - - - - - - - - - - - - - - - Spring data jpa 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->

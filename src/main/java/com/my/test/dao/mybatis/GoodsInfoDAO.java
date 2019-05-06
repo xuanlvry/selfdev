@@ -1,5 +1,6 @@
 package com.my.test.dao.mybatis;
 
+import com.my.test.GoodsInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -14,4 +15,11 @@ public interface GoodsInfoDAO {
      * @return
      */
     int reduceStock(@Param("id") Integer id, @Param("num") Integer num);
+
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    GoodsInfo selectById(@Param("id") Integer id);
 }
