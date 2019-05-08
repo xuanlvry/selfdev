@@ -37,6 +37,8 @@
 	<!-- 设置@AspectJ支持 -->
 	<aop:aspectj-autoproxy />
 
+	<bean id="extensionTest" class="com.my.test.springbean.ExtensionTest" init-method="init"/>
+
 	<bean id="workImpl" class="com.my.test.proxy.spring.WorkImpl"/>
 
 	<!--这个workImplProxy可以取代一个IWork的实现，这里取代的实现是workImpl-->
@@ -72,9 +74,9 @@
 
 	<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"/>
 
-	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil" lazy-init="false"/>
+	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil"/>
 
-	<bean id="myServiceImpl" class="com.my.test.MyServiceImpl" init-method="init2" lazy-init="false" destroy-method="closeTest">
+	<bean id="myServiceImpl" class="com.my.test.MyServiceImpl">
 		<property name="name" value="propertyName"/>
 	</bean>
 

@@ -1,11 +1,8 @@
 package com.my.test;
 
-import com.my.test.dao.GoodsInfoService;
 import com.my.test.dao.mybatis.IUserMapper;
 import com.my.test.redis.UserRedisDAO;
 import lombok.Setter;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
@@ -20,7 +17,7 @@ import javax.annotation.Resource;
  */
 //@Service
 //@Lazy(value = true)
-public class MyServiceImpl implements IMyService, InitializingBean, DisposableBean {
+public class MyServiceImpl implements IMyService {
     @Autowired
     private IUserMapper userMapper;
 
@@ -81,16 +78,6 @@ public class MyServiceImpl implements IMyService, InitializingBean, DisposableBe
     public UserInfo selectBySpringCache(String account) {
         System.out.println("default: real querying db..." + account);
         return userMapper.selectUserByAccount(account);
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("myServiceImpl afterPropertiesSet method");
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("MyserviceImpl destroy");
     }
 
     public void closeTest() {
