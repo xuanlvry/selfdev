@@ -1,4 +1,4 @@
-package com.my.test.thread.other;
+package com.my.test.thread;
 
 /**
  * Created by sunchengfei on 2018/2/9.
@@ -10,6 +10,7 @@ public class InternTest implements Runnable {
         this.userId = userId;
     }
 
+    @Override
     public void run() {
         synchronized (userId.intern()) {
             System.out.println(Thread.currentThread().getName() + "[" + userId + "]开始运行了");

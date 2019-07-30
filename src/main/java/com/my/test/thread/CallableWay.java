@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
+ * 实现接口Callable方式创建线程
  * Created by sunchengfei on 2018/3/27.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:META-INF/application-context.xml", "classpath*:META-INF/application-dao-context.xml"})
-public class CallableTest {
+public class CallableWay {
     @Test
     public void test() throws InterruptedException {
         int threadCount = 5;

@@ -149,6 +149,11 @@
             <scope>compile</scope>
         </dependency>
         <!-- test end -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.0.0</version>
+        </dependency>
 
         <!-- logging日志 start -->
         <!--slf4j-->

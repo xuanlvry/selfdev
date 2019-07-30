@@ -14,6 +14,7 @@ public class SemaphoreTest implements Runnable {
         this.semaphore = semaphore;
     }
 
+    @Override
     public void run() {
         try {
             semaphore.acquire();
