@@ -14,4 +14,8 @@
     <select id="selectById" parameterType="int" resultMap="goodsInfo">
         select * from GOODS_INFO where id = #{id};
     </select>
+
+    <select id="selectByName" parameterType="string" resultMap="goodsInfo">
+        select * from GOODS_INFO where goodsName like CONCAT('%',#{name},'%');
+    </select>
 </mapper>

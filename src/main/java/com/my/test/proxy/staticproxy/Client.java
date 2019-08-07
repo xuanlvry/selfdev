@@ -5,8 +5,11 @@ package com.my.test.proxy.staticproxy;
  */
 public class Client {
     public static void main(String[] args) {
+        //定义一个真实角色
         ISubject subject = new RealSubject();
+        //定义代理角色
         ISubject proxy = new ProxySubject(subject);
+        //调用
         System.out.println(proxy.hello("world"));
     }
 }

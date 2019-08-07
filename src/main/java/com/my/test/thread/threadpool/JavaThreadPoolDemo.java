@@ -13,13 +13,12 @@ public class JavaThreadPoolDemo {
         /**
          * 创建线程池：核心线程数为2，最大线程数为4，线程池维护线程的空闲时间为3秒
          */
-        ExecutorService executorService = new ThreadPoolExecutor(1, 10, 10, TimeUnit.SECONDS,
+        ExecutorService executorService = new ThreadPoolExecutor(30, 50, 10, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<Runnable>(1), new ThreadPoolExecutor.CallerRunsPolicy());
 
         //向线程池中添加10个任务
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 30; i++) {
             executorService.execute(new ThreadPoolTask(String.valueOf(i)));
-//            Thread.sleep(100);
         }
 
         //executorService.shutdown();
@@ -37,8 +36,19 @@ public class JavaThreadPoolDemo {
 
         @Override
         public void run() {
-            System.out.println(Thread.currentThread().getName() + " is running" + "：" + this.threadName);
-            //System.out.println(1/0);
+            System.out.println(Thread.currentThread().getName() + " start");
+            StringBuilder bigStr = new StringBuilder();
+            while (true) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                bigStr.append("-BIG STR--BIG STR--BIG STR--BIG STR--BIG STR--BIG STR-");
+                String a = new String("aaa");
+                String b = new String("bbb");
+                String c = new String("bbb");
+            }
         }
     }
 }

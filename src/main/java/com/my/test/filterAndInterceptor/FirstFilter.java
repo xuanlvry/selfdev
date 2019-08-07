@@ -16,8 +16,12 @@ public class FirstFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println("FirstFilter doFilter前");
+
         UserInfoRequestWrapper requestWrapper = new UserInfoRequestWrapper((HttpServletRequest) servletRequest);
-        filterChain.doFilter(requestWrapper, servletResponse);  //让目标资源执行，放行
+        //doFilter()方法：激活调用chain中的下一个filter。如果当前filter为最后一个filter，则继续调用request resource
+        filterChain.doFilter(requestWrapper, servletResponse);
+
+        //doFilter()整个链路调用完成后，执行线程还会回到该位置，继续执行
         System.out.println("FirstFilter doFilter后");
     }
 

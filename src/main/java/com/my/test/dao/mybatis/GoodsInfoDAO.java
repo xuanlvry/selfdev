@@ -22,4 +22,11 @@ public interface GoodsInfoDAO {
      * @return
      */
     GoodsInfo selectById(@Param("id") Integer id);
+
+    /**
+     * 根据name查询
+     * @param name
+     * @return
+     */
+    GoodsInfo selectByName(@Param("name") String name);
 }
