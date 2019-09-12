@@ -3,14 +3,14 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
     <!--定义WEB应用名字-->
-    <display-name>testProject</display-name>
+    <display-name>sun-dev</display-name>
     <!--声明WEB应用的描述信息-->
     <description>描述信息</description>
 
     <!-- context-param元素声明应用范围内的初始化参数 -->
     <context-param>
         <param-name>webAppRootKey</param-name>
-        <param-value>com.my.test.root</param-value>
+        <param-value>com.sun.dev.root</param-value>
     </context-param>
 
     <!-- Spring ApplicationContext配置文件的路径,可使用通配符,多个路径用,号分隔 此参数用于后面的Context Loader -->
@@ -134,7 +134,7 @@
     <!--servlet filter-->
     <filter>
         <filter-name>firstFilter</filter-name>
-        <filter-class>com.my.test.filterAndInterceptor.FirstFilter</filter-class>
+        <filter-class>com.sun.dev.filterAndInterceptor.FirstFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>firstFilter</filter-name>
@@ -143,7 +143,7 @@
 
 <!--    <filter>-->
 <!--        <filter-name>secondFilter</filter-name>-->
-<!--        <filter-class>com.my.test.filterAndInterceptor.SecondFilter</filter-class>-->
+<!--        <filter-class>SecondFilter</filter-class>-->
 <!--    </filter>-->
 <!--    <filter-mapping>-->
 <!--        <filter-name>secondFilter</filter-name>-->

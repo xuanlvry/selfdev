@@ -47,7 +47,7 @@
 		<property name="cacheManagerConfigFile" value="classpath:/META-INF/ehcache.xml"/>
 	</bean>
 
-	<bean id="credentialsMatcher" class="com.my.test.shiro.RetryLimitHashedCredentialsMatcher">
+	<bean id="credentialsMatcher" class="com.sun.dev.shiro.RetryLimitHashedCredentialsMatcher">
 		<constructor-arg ref="cacheManager"/>
 		<property name="hashAlgorithmName" value="md5"/>
 		<property name="hashIterations" value="2"/>

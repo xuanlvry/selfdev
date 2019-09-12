@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
 	   default-lazy-init="true">
 
-	<bean id="myRealm" class="com.my.test.shiro.MyRealm">
+	<bean id="myRealm" class="com.sun.dev.shiro.MyRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher" />
 		<!--<property name="cachingEnabled" value="true"/>-->
 		<property name="authenticationCachingEnabled" value="true"/>
@@ -46,7 +46,7 @@
 		<property name="cacheManagerConfigFile" value="classpath:/META-INF/ehcache.xml"/>
 	</bean>
 
-	<bean id="credentialsMatcher" class="com.my.test.shiro.RetryLimitHashedCredentialsMatcher">
+	<bean id="credentialsMatcher" class="com.sun.dev.shiro.RetryLimitHashedCredentialsMatcher">
 		<constructor-arg ref="cacheManager"/>
 		<!--指定hash算法为MD5-->
 		<property name="hashAlgorithmName" value="md5"/>

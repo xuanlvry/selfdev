@@ -37,14 +37,14 @@
 	<!-- 设置@AspectJ支持 -->
 	<aop:aspectj-autoproxy />
 
-	<bean id="extensionTest" class="com.my.test.springbean.ExtensionTest" init-method="init"/>
+	<bean id="extensionTest" class="com.sun.dev.springbean.ExtensionTest" init-method="init"/>
 
-	<bean id="workImpl" class="com.my.test.proxy.spring.WorkImpl"/>
+	<bean id="workImpl" class="com.sun.dev.proxy.spring.WorkImpl"/>
 
 	<!--这个workImplProxy可以取代一个IWork的实现，这里取代的实现是workImpl-->
 	<bean id="workImplProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<!--需要代理的接口-->
-		<property name="proxyInterfaces" value="com.my.test.proxy.spring.IWork"/>
+		<property name="proxyInterfaces" value="com.sun.dev.proxy.spring.IWork"/>
 
 		<!--需要代理的某个接口实现【被代理的目标bean】-->
 		<property name="target">
@@ -74,9 +74,9 @@
 
 	<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"/>
 
-	<bean id="springContextUtil" class="com.my.test.springbean.SpringContextUtil"/>
+	<bean id="springContextUtil" class="com.sun.dev.springbean.SpringContextUtil"/>
 
-	<bean id="myServiceImpl" class="com.my.test.MyServiceImpl">
+	<bean id="myServiceImpl" class="com.sun.dev.service.UserServiceImpl">
 		<property name="name" value="propertyName"/>
 	</bean>
 
@@ -88,6 +88,10 @@
 			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
 		</property>
 	</bean>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - framework - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<bean id="searchHandleFactory" class="com.sun.dev.framework.handlechain.frame.SearchHandleFactory" />
+
 
 	<!-- - - - - - - - - - - - - - - - - - - - - Spring cache - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<!-- 启用缓存注解功能。指定一个默认的cacheManager，否则需要在注解使用时指定cache-Manager="xxx" -->
@@ -115,12 +119,12 @@
 		</property>
 	</bean>
 
-	<!--<bean id="memCacheManager" class="com.my.test.springcache.MemcacheCacheManager">-->
+	<!--<bean id="memCacheManager" class="MemcacheCacheManager">-->
 		<!--<property name="caches">-->
 			<!--<set>-->
-				<!--<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"-->
+				<!--<bean class="MemcachedCache" p:client-ref="xmemcachedClient"-->
 					  <!--p:name="orderInfoCache" p:exp="3600"/>-->
-				<!--<bean class="com.my.test.springcache.MemcachedCache" p:client-ref="xmemcachedClient"-->
+				<!--<bean class="MemcachedCache" p:client-ref="xmemcachedClient"-->
 					  <!--p:name="userInfoCache" p:exp="3600"/>-->
 			<!--</set>-->
 		<!--</property>-->
@@ -131,7 +135,7 @@
     <!--<bean id="myjob2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
         <!--&lt;!&ndash;指定任务类&ndash;&gt;-->
         <!--<property name="targetObject">-->
-            <!--<bean class="com.my.test.quartz.MyJob2"/>-->
+            <!--<bean class="MyJob2"/>-->
         <!--</property>-->
         <!--&lt;!&ndash;指定运行的方法&ndash;&gt;-->
         <!--<property name="targetMethod" value="doTask"/>-->
@@ -141,7 +145,7 @@
 
     <!--<bean name="myjob" class="org.springframework.scheduling.quartz.JobDetailBean">-->
         <!--&lt;!&ndash;jobClass属性即我们在java代码中定义的任务类&ndash;&gt;-->
-        <!--<property name="jobClass" value="com.my.test.quartz.MyJob"/>-->
+        <!--<property name="jobClass" value="MyJob"/>-->
         <!--&lt;!&ndash;jobDataAsMap属性即该任务类中需要注入的属性值&ndash;&gt;-->
         <!--<property name="jobDataAsMap">-->
             <!--<map>-->
