@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by sunchengfei on 2018/6/29.
  */
-@MappedJdbcTypes(JdbcType.VARCHAR)
+@MappedJdbcTypes(value = JdbcType.VARCHAR)
 @MappedTypes(java.util.List.class)
 public class ListStringTypeHandler extends BaseTypeHandler<List<String>> {
     @Override

@@ -17,14 +17,14 @@ import javax.annotation.Resource;
 @RequestMapping("user")
 public class UserController {
     @Resource
-    private IUserService myServiceImpl;
+    private IUserService userServiceImpl;
 
     @RequestMapping(value = "update", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public ServiceResponse update(UserInfo userInfo) {
         ServiceResponse response = new ServiceResponse();
         try {
-            myServiceImpl.updateUser(userInfo);
+            userServiceImpl.updateUser(userInfo);
         } catch (Exception e) {
             response.setCode("9999");
             response.setMessage("服务器异常");
@@ -32,12 +32,12 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "query", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "queryByAccount", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
-    public ServiceResponse query(String account) {
+    public ServiceResponse queryByAccount(String account) {
         ServiceResponse response = new ServiceResponse();
         try {
-            UserInfo userInfo = myServiceImpl.selectUser("f28L3M1re5");
+            UserInfo userInfo = userServiceImpl.selectUserByAccount("f28L3M1re5");
             response.setObject(userInfo);
         } catch (Exception e) {
             response.setCode("9999");

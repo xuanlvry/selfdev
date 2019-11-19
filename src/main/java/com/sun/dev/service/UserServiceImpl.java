@@ -5,8 +5,7 @@ import com.sun.dev.redis.UserRedisDAO;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -15,8 +14,7 @@ import javax.annotation.Resource;
 /**
  * Created by Chengfei.Sun on 17/03/28.
  */
-//@Service
-//@Lazy(value = true)
+@Service
 public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserMapper userMapper;
@@ -58,22 +56,17 @@ public class UserServiceImpl implements IUserService {
         return userInfo;
     }
 
-    @Cacheable(value = "accountCache")
     @Override
-    public UserInfo selectUser(String account) {
+    public UserInfo selectUserByAccount(String account) {
         System.out.println("accountCache: real querying db..." + account);
-        userRedisDAO.query(account);
-        goodsInfoService.queryById(0);
         return userMapper.selectUserByAccount(account);
     }
 
-    @CacheEvict(value = "accountCache", key = "#p0.account", allEntries = false)
     @Override
     public void updateUser(UserInfo userInfo) {
         userMapper.updateUser(userInfo);
     }
 
-    @Cacheable(value = "default")
     @Override
     public UserInfo selectBySpringCache(String account) {
         System.out.println("default: real querying db..." + account);

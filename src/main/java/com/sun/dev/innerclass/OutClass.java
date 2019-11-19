@@ -23,7 +23,7 @@ public class OutClass {
             }
 
             @Override
-            public UserInfo selectUser(String account) {
+            public UserInfo selectUserByAccount(String account) {
                 return null;
             }
 
@@ -56,7 +56,7 @@ public class OutClass {
         }
 
         @Override
-        public UserInfo selectUser(String account) {
+        public UserInfo selectUserByAccount(String account) {
             return null;
         }
 

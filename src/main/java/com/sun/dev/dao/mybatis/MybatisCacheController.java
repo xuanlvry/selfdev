@@ -2,12 +2,13 @@ package com.sun.dev.dao.mybatis;
 
 import com.sun.dev.service.IUserService;
 import com.sun.dev.service.UserInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Chengfei.Sun on 17/03/29.
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("mybatisCacheController")
 @RequestMapping("mybatisCache")
 public class MybatisCacheController {
-    @Autowired
+    @Resource
     private IUserService myServiceImpl;
 
     @RequestMapping(value = "selectbyid", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
@@ -27,7 +28,7 @@ public class MybatisCacheController {
     @RequestMapping(value = "selectbyaccount", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select(@RequestParam("account") String account) {
-        return myServiceImpl.selectUser(account);
+        return myServiceImpl.selectUserByAccount(account);
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=utf-8")

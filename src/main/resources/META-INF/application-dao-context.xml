@@ -65,7 +65,7 @@
 
     <!-- 扫描mappers自动配置 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.my.test.dao.mybatis"/>
+        <property name="basePackage" value="com.sun.dev.dao.mybatis"/>
     </bean>
 
     <!-- - - - - - - - - - - - - - - - - - - - - Spring data jpa 配置 - - - - - - - - - - - - - - - - - - - - - - - - -->

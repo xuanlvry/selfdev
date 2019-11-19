@@ -6,7 +6,7 @@ package com.sun.dev.service;
 public interface IUserService {
     UserInfo selectUser(long id);
 
-    UserInfo selectUser(String account);
+    UserInfo selectUserByAccount(String account);
 
     void updateUser(UserInfo userInfo);
 

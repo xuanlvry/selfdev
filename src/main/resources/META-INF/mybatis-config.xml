@@ -9,7 +9,7 @@
     </settings>
 
     <typeHandlers>
-        <typeHandler javaType="java.util.List" jdbcType="VARCHAR" handler="com.sun.dev.dao.mybatis.typehandler.ListStringTypeHandler"/>
+        <typeHandler handler="com.sun.dev.dao.mybatis.typehandler.ListStringTypeHandler"/>
     </typeHandlers>
 
 <!--    <mappers>-->

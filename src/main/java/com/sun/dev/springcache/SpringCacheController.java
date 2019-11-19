@@ -1,12 +1,13 @@
 package com.sun.dev.springcache;
 
-import com.sun.dev.service.UserInfo;
 import com.sun.dev.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sun.dev.service.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Chengfei.Sun on 17/03/29.
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("springCacheController")
 @RequestMapping("springcache")
 public class SpringCacheController {
-    @Autowired
+    @Resource
     private IUserService myServiceImpl;
 
     @RequestMapping(value = "select", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select() {
-        UserInfo userInfo = myServiceImpl.selectUser("jack");
+        UserInfo userInfo = myServiceImpl.selectUserByAccount("jack");
         return myServiceImpl.selectBySpringCache("jack");
     }
 
