@@ -90,7 +90,6 @@
 	</bean>
 
 	<!-- - - - - - - - - - - - - - - - - - - - - framework - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<bean id="searchHandleFactory" class="com.sun.dev.framework.handlechain.frame.SearchHandleFactory" />
 
 
 	<!-- - - - - - - - - - - - - - - - - - - - - Spring cache - - - - - - - - - - - - - - - - - - - - - - - - -->
