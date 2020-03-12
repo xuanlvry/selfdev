@@ -5,4 +5,6 @@ package com.sun.dev.proxy.spring;
  */
 public interface IWork {
     void work();
+
+    void rest();
 }

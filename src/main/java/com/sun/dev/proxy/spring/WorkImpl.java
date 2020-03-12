@@ -6,8 +6,12 @@ package com.sun.dev.proxy.spring;
 public class WorkImpl implements IWork {
     @Override
     public void work() {
-        System.out.println("原workImpl执行work方法");
-        System.out.println(1 / 0);
+        System.out.println("It's time to get to work");
+    }
+
+    @Override
+    public void rest() {
+        System.out.println("have a good rest");
     }
 }
 

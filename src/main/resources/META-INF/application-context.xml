@@ -39,31 +39,6 @@
 
 	<bean id="extensionTest" class="com.sun.dev.springbean.ExtensionTest" init-method="init"/>
 
-	<bean id="workImpl" class="com.sun.dev.proxy.spring.WorkImpl"/>
-
-	<!--这个workImplProxy可以取代一个IWork的实现，这里取代的实现是workImpl-->
-	<bean id="workImplProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<!--需要代理的接口-->
-		<property name="proxyInterfaces" value="com.sun.dev.proxy.spring.IWork"/>
-
-		<!--需要代理的某个接口实现【被代理的目标bean】-->
-		<property name="target">
-			<ref bean="workImpl"/>
-		</property>
-
-		<!--当前工厂中拦截器或advisorbean的名字。拦截器，advisor，前置, 后置和异常通知对象都可以在这里被使用。-->
-		<!--这里advisor的顺序是很重要的，排在前面的优先被调用-->
-		<property name="interceptorNames">
-			<list>
-				<!--<value>workThrowsAdvice</value>-->
-				<value>workMethodInterceptor</value>
-				<!--<value>workBeforeAndAfterProxy</value>-->
-				<!--<value>workExceptionProxy</value>-->
-				<!--<value>workBeforeProxy</value>-->
-			</list>
-		</property>
-	</bean>
-
     <context:property-placeholder ignore-resource-not-found="true"
                                   location="classpath*:META-INF/application.develop.properties" file-encoding="UTF-8" />
 
@@ -76,7 +51,7 @@
 
 	<bean id="springContextUtil" class="com.sun.dev.springbean.SpringContextUtil"/>
 
-	<bean id="myServiceImpl" class="com.sun.dev.service.UserServiceImpl">
+	<bean id="userServiceImpl" class="com.sun.dev.service.UserServiceImpl">
 		<property name="name" value="propertyName"/>
 	</bean>
 
@@ -88,6 +63,56 @@
 			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
 		</property>
 	</bean>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - Spring AOP - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- 设置@AspectJ支持 -->
+<!--	<aop:aspectj-autoproxy />-->
+
+	<!--被代理的类-->
+	<bean id="workImpl" class="com.sun.dev.proxy.spring.WorkImpl"/>
+
+	<!--通知/增强-->
+	<bean id="workBeforeAdvice" class="com.sun.dev.proxy.spring.WorkBeforeAdvice"/>
+
+	<!--切面-->
+	<bean id="regexpMethodPointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref bean="workBeforeAdvice"/>
+		</property>
+		<property name="pattern">
+			<value>com.sun.dev.proxy.spring.WorkImpl.rest*</value>
+		</property>
+	</bean>
+
+	<!--代理类-->
+	<bean id="workImplProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!--需要代理的接口，可以省略-->
+		<property name="proxyInterfaces" value="com.sun.dev.proxy.spring.IWork"/>
+
+		<!--被代理的对象-->
+		<property name="target">
+			<ref bean="workImpl"/>
+		</property>
+
+		<!--拦截器名称集合(排在前面的优先被调用)。可以是Advice(增强)或Advisor(切面)的实现类，最终形成拦截器链时都转化成Advisor-->
+		<property name="interceptorNames">
+			<list>
+				<value>regexpMethodPointcutAdvisor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--代理类-->
+<!--	<bean id="beanNameAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+<!--		<property name="interceptorNames">-->
+<!--			<list>-->
+<!--				<value>workBeforeAdvice</value>-->
+<!--			</list>-->
+<!--		</property>-->
+<!--		<property name="beanNames">-->
+<!--			<value>workImpl*</value>-->
+<!--		</property>-->
+<!--	</bean>-->
 
 	<!-- - - - - - - - - - - - - - - - - - - - - framework - - - - - - - - - - - - - - - - - - - - - - - - -->
 

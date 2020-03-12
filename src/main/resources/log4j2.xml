@@ -20,7 +20,11 @@
             <appender-ref ref="Console"/>
         </logger>
 
-        <root level="info">
+        <logger name="org.apache.zookeeper.ZooKeeper" level="warn" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+
+        <root level="warn">
             <appender-ref ref="Console"/>
         </root>
     </loggers>

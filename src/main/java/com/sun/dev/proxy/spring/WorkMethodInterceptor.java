@@ -3,12 +3,10 @@ package com.sun.dev.proxy.spring;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by sunchengfei on 2019/3/8.
  */
-@Service
 public class WorkMethodInterceptor implements MethodInterceptor {
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
