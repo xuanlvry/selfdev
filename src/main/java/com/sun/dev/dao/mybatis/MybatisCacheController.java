@@ -17,24 +17,24 @@ import javax.annotation.Resource;
 @RequestMapping("mybatisCache")
 public class MybatisCacheController {
     @Resource
-    private IUserService myServiceImpl;
+    private IUserService userServiceImpl;
 
     @RequestMapping(value = "selectbyid", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select(@RequestParam("id") Long id) {
-        return myServiceImpl.selectUser(id);
+        return userServiceImpl.selectUser(id);
     }
 
     @RequestMapping(value = "selectbyaccount", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select(@RequestParam("account") String account) {
-        return myServiceImpl.selectUserByAccount(account);
+        return userServiceImpl.selectUserByAccount(account);
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String update(UserInfo userInfo) {
-        myServiceImpl.updateUser(userInfo);
+        userServiceImpl.updateUser(userInfo);
         return "{\"msg\":\"success\"}";
     }
 }

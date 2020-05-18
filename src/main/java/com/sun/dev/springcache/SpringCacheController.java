@@ -16,19 +16,19 @@ import javax.annotation.Resource;
 @RequestMapping("springcache")
 public class SpringCacheController {
     @Resource
-    private IUserService myServiceImpl;
+    private IUserService userServiceImpl;
 
     @RequestMapping(value = "select", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public UserInfo select() {
-        UserInfo userInfo = myServiceImpl.selectUserByAccount("jack");
-        return myServiceImpl.selectBySpringCache("jack");
+        UserInfo userInfo = userServiceImpl.selectUserByAccount("jack");
+        return userServiceImpl.selectBySpringCache("jack");
     }
 
     @RequestMapping(value = "update", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String update(UserInfo userInfo) {
-        myServiceImpl.updateUser(userInfo);
+        userServiceImpl.updateUser(userInfo);
         return "{\"msg\":\"success\"}";
     }
 }
