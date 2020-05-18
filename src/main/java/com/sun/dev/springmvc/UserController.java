@@ -1,12 +1,14 @@
 package com.sun.dev.springmvc;
 
+import com.sun.dev.common.constants.ServiceResponse;
 import com.sun.dev.service.IUserService;
 import com.sun.dev.service.UserInfo;
-import com.sun.dev.common.constants.ServiceResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.Resource;
 
@@ -37,7 +39,10 @@ public class UserController {
     public ServiceResponse queryByAccount(String account) {
         ServiceResponse response = new ServiceResponse();
         try {
-            UserInfo userInfo = userServiceImpl.selectUserByAccount("f28L3M1re5");
+            //UserInfo userInfo = userServiceImpl.selectUserByAccount("f28L3M1re5");
+            WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
+            IUserService userService = (IUserService) webApplicationContext.getBean("userServiceImpl");
+            UserInfo userInfo = userService.selectUserByAccount(account);
             response.setObject(userInfo);
         } catch (Exception e) {
             response.setCode("9999");
