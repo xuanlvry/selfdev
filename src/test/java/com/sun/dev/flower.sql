@@ -55,12 +55,76 @@ order by allOrder.RelationShopId asc
 limit 0, 10000;
 
 -- 鲜花联盟
-select count(NewOrderID)
+select "爱恋鲜花-KA", count(NewOrderID) - 16000
 from DPF_DeliveryOrder
 where Status != 1
   and Status != 9
   and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
-  and CustomerID =;
+  and CustomerID = 40118608
+UNION ALL
+select "爱里鲜花-KA", count(NewOrderID) - 5000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 41634243
+UNION ALL
+select "爱花居集团-KA", count(NewOrderID) - 60000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 40648510
+UNION ALL
+select "爱之裳-KA", count(NewOrderID) - 3000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 1567681
+UNION ALL
+select "爱丽丝花坊-KA", count(NewOrderID) - 1000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 40118608
+UNION ALL
+select "先花店-KA", count(NewOrderID) - 18000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 723059
+UNION ALL
+select "沪花拾者-KA", count(NewOrderID) - 6000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 41115818
+UNION ALL
+select "美尚美鲜花-KA", count(NewOrderID) - 10000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 1370172
+UNION ALL
+select "玫瑰之约-KA", count(NewOrderID) - 15000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 41447232
+UNION ALL
+select "花冠鲜花-KA", count(NewOrderID) - 9000
+from DPF_DeliveryOrder
+where Status != 1
+  and Status != 9
+  and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+  and CustomerID = 676674;
+
 
 -- 拒单
 select count(allOrder.NewOrderID)                                                         as '总订单量',
