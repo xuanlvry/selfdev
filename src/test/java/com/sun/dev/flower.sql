@@ -12,7 +12,7 @@ from (select CustomerID, NewOrderID
       from DPF_DeliveryOrder
       where Status != 1
         and Status != 9
-        and ArrivalTime between '2020-05-10 00:00:00' and '2020-05-10 23:59:59') allOrder
+        and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 00:00:00') allOrder
          Left JOIN
      (select orders.NewOrderID
       from DPF_DeliveryOrder orders
@@ -21,7 +21,7 @@ from (select CustomerID, NewOrderID
       where orders.Status != 1
         and orders.Status != 9
         and orders.RelationShopId = 0
-        and orders.ArrivalTime between '2020-05-10 00:00:00' and '2020-05-10 23:59:59'
+        and orders.ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 00:00:00'
         and operation.OperationType = 4) refuse
      on allOrder.NewOrderID = refuse.NewOrderID
 Group by allOrder.CustomerID
@@ -38,7 +38,7 @@ from (select RelationShopId, NewOrderID
       where Status != 1
         and Status != 9
         and RelationShopId != 0
-        and ArrivalTime between '2020-05-10 00:00:00' and '2020-05-10 23:59:59') allOrder
+        and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 00:00:00') allOrder
          Left JOIN
      (select orders.NewOrderID
       from DPF_DeliveryOrder orders
@@ -47,7 +47,7 @@ from (select RelationShopId, NewOrderID
       where orders.Status != 1
         and orders.Status != 9
         and orders.RelationShopId != 0
-        and orders.ArrivalTime between '2020-05-10 00:00:00' and '2020-05-10 23:59:59'
+        and orders.ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 00:00:00'
         and operation.OperationType = 4) refuse
      on allOrder.NewOrderID = refuse.NewOrderID
 Group by allOrder.RelationShopId
