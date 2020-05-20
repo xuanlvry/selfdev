@@ -81,7 +81,7 @@ from DPF_DeliveryOrder
 where Status != 1
   and Status != 9
   and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
-  and CustomerID = 1567681
+  and CustomerID IN (1567681, 1515912)
 UNION ALL
 select "爱丽丝花坊-KA", count(NewOrderID) - 1000
 from DPF_DeliveryOrder
