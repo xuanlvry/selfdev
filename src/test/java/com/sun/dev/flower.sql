@@ -116,7 +116,7 @@ from DPF_DeliveryOrder
 where Status != 1
   and Status != 9
   and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
-  and CustomerID = 41447232
+  and CustomerID IN (40088145, 41447232, 1254050, 41370270, 41370235)
 UNION ALL
 select "花冠鲜花-KA", count(NewOrderID) - 9000
 from DPF_DeliveryOrder
