@@ -5,9 +5,9 @@
 
 -- 接单前，拒单
 select allOrder.CustomerID,
-       count(allOrder.NewOrderID)                                                               as '订单量',
-       count(refuse.NewOrderID) - 10                                                            as '拒单量对比值',
-       concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2) - 0.3, '%') as '拒单率对比值'
+       count(allOrder.NewOrderID)                                                              as '订单量',
+       count(refuse.NewOrderID) - 10                                                           as '拒单量对比值',
+       concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2) - 30, '%') as '拒单率对比值'
 from (select CustomerID, NewOrderID
       from DPF_DeliveryOrder
       where Status != 1
@@ -29,10 +29,10 @@ order by allOrder.CustomerID asc
 limit 0, 10000;
 
 -- 接单后，拒单
-select allOrder.RelationShopId                                                                  as '点评shopID',
-       count(allOrder.NewOrderID)                                                               as '订单量',
-       count(refuse.NewOrderID) - 5                                                             as '拒单量对比值',
-       concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2) - 0.3, '%') as '拒单率对比值'
+select allOrder.RelationShopId                                                                 as '点评shopID',
+       count(allOrder.NewOrderID)                                                              as '订单量',
+       count(refuse.NewOrderID) - 5                                                            as '拒单量对比值',
+       concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2) - 30, '%') as '拒单率对比值'
 from (select RelationShopId, NewOrderID
       from DPF_DeliveryOrder
       where Status != 1
