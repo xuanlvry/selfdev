@@ -126,7 +126,7 @@ where Status != 1
   and CustomerID = 676674;
 
 
--- 拒单
+-- 总订单，总拒单
 select count(allOrder.NewOrderID)                                                         as '总订单量',
        count(refuse.NewOrderID)                                                           as '拒单量',
        concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2), '%') as '拒单率'
@@ -134,7 +134,7 @@ from (select NewOrderID
       from DPF_DeliveryOrder
       where Status != 1
         and Status != 9
-        and ArrivalTime between '2020-05-10 00:00:00' and '2020-05-10 23:59:59') allOrder
+        and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59') allOrder
          Left JOIN
      (select orders.NewOrderID
       from DPF_DeliveryOrder orders
@@ -142,9 +142,8 @@ from (select NewOrderID
                           ON orders.NewOrderID = operation.NewOrderID
       where orders.Status != 1
         and orders.Status != 9
-        and orders.ArrivalTime between '2020-05-10 00:00:00' and '2020-05-10 23:59:59'
-        and operation.OperationType = 4
-        and operation.AddTime between '2020-05-10 07:00:00' and '2020-05-10 07:30:00') refuse
+        and orders.ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+        and operation.OperationType = 4) refuse
      on allOrder.NewOrderID = refuse.NewOrderID;
 
 -- 拒单，筛选customerid
