@@ -12,7 +12,7 @@
         <org.springframework.version>5.0.5.RELEASE</org.springframework.version>
         <org.springframework.data.version>2.0.6.RELEASE</org.springframework.data.version>
         <org.hibernate.version>5.2.16.Final</org.hibernate.version>
-        <fasterxml.jackson.version>2.9.5</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.11.2</fasterxml.jackson.version>
     </properties>
 
     <dependencyManagement>
