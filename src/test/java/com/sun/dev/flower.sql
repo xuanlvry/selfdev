@@ -134,7 +134,7 @@ from (select NewOrderID
       from DPF_DeliveryOrder
       where Status != 1
         and Status != 9
-        and ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59') allOrder
+        and ArrivalTime between '2020-08-25 00:00:00' and '2020-08-25 23:59:59') allOrder
          Left JOIN
      (select orders.NewOrderID
       from DPF_DeliveryOrder orders
@@ -142,9 +142,50 @@ from (select NewOrderID
                           ON orders.NewOrderID = operation.NewOrderID
       where orders.Status != 1
         and orders.Status != 9
-        and orders.ArrivalTime between '2020-05-20 00:00:00' and '2020-05-20 23:59:59'
+        and orders.ArrivalTime between '2020-08-25 00:00:00' and '2020-08-25 23:59:59'
         and operation.OperationType = 4) refuse
      on allOrder.NewOrderID = refuse.NewOrderID;
+
+-- 总订单，总确认收货
+select count(allOrder.NewOrderID)                                                         as '总订单量',
+       count(refuse.NewOrderID)                                                           as '确认收货订单量',
+       concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2), '%') as '占比'
+from (select NewOrderID
+      from DPF_DeliveryOrder
+      where Status != 1
+        and Status != 9
+        and ArrivalTime between '2020-08-25 00:00:00' and '2020-08-25 23:59:59') allOrder
+         Left JOIN
+     (select orders.NewOrderID
+      from DPF_DeliveryOrder orders
+               inner join DPF_DeliveryOrderOperation operation
+                          ON orders.NewOrderID = operation.NewOrderID
+      where orders.Status != 1
+        and orders.Status != 9
+        and orders.ArrivalTime between '2020-08-25 00:00:00' and '2020-08-25 23:59:59'
+        and operation.OperationType = 5) refuse
+     on allOrder.NewOrderID = refuse.NewOrderID;
+
+-- 总订单，总确认收货
+select count(allOrder.NewOrderID)                                                         as '总订单量',
+       count(refuse.NewOrderID)                                                           as '配送退款订单量',
+       concat(ROUND(count(refuse.NewOrderID) / count(allOrder.NewOrderID) * 100, 2), '%') as '占比'
+from (select NewOrderID
+      from DPF_DeliveryOrder
+      where Status != 1
+        and Status != 9
+        and ArrivalTime between '2020-08-25 00:00:00' and '2020-08-25 23:59:59') allOrder
+         Left JOIN
+     (select orders.NewOrderID
+      from DPF_DeliveryOrder orders
+               inner join DPF_DeliveryOrderOperation operation
+                          ON orders.NewOrderID = operation.NewOrderID
+      where orders.Status != 1
+        and orders.Status != 9
+        and orders.ArrivalTime between '2020-08-25 00:00:00' and '2020-08-25 23:59:59'
+        and operation.OperationType = 6) refuse
+     on allOrder.NewOrderID = refuse.NewOrderID;
+
 
 -- 总订单，总拒单，筛选customerid
 select count(allOrder.NewOrderID)                                                         as '总订单量',
