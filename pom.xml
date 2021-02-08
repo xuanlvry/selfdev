@@ -136,11 +136,11 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>8.5.15</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.tomcat.embed</groupId>-->
+        <!--            <artifactId>tomcat-embed-core</artifactId>-->
+        <!--            <version>8.5.15</version>-->
+        <!--        </dependency>-->
 
         <!-- junit test start -->
         <dependency>
@@ -172,16 +172,16 @@
 
         <!--SLF4J到log4j 1.x的桥接包-->
         <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-log4j12</artifactId>-->
-            <!--<version>1.7.5</version>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--<version>1.7.5</version>-->
         <!--</dependency>-->
 
         <!--log4j1.x核心包-->
         <!--<dependency>-->
-            <!--<groupId>log4j</groupId>-->
-            <!--<artifactId>log4j</artifactId>-->
-            <!--<version>1.2.17</version>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>1.2.17</version>-->
         <!--</dependency>-->
 
         <!--log4j2核心包-->
@@ -319,8 +319,8 @@
             </exclusions>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-commons</artifactId>-->
+        <!--<groupId>org.springframework.data</groupId>-->
+        <!--<artifactId>spring-data-commons</artifactId>-->
         <!--</dependency>-->
         <!-- spring end -->
 
@@ -484,9 +484,9 @@
             <artifactId>hibernate-ehcache</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.hibernate.javax.persistence</groupId>-->
-            <!--<artifactId>hibernate-jpa-2.1-api</artifactId>-->
-            <!--<version>1.0.2.Final</version>-->
+        <!--<groupId>org.hibernate.javax.persistence</groupId>-->
+        <!--<artifactId>hibernate-jpa-2.1-api</artifactId>-->
+        <!--<version>1.0.2.Final</version>-->
         <!--</dependency>-->
         <!-- hibernate end -->
 
@@ -499,15 +499,15 @@
         <!-- mysql jdbc driver end -->
 
         <!--<dependency>-->
-            <!--<groupId>com.alibaba.otter</groupId>-->
-            <!--<artifactId>canal.client</artifactId>-->
-            <!--<version>1.0.12</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>spring</artifactId>-->
-                    <!--<groupId>org.springframework</groupId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
+        <!--<groupId>com.alibaba.otter</groupId>-->
+        <!--<artifactId>canal.client</artifactId>-->
+        <!--<version>1.0.12</version>-->
+        <!--<exclusions>-->
+        <!--<exclusion>-->
+        <!--<artifactId>spring</artifactId>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--</exclusion>-->
+        <!--</exclusions>-->
         <!--</dependency>-->
 
         <!-- mongodb begin -->
@@ -699,6 +699,19 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.ning.maven.plugins</groupId>
+                <artifactId>maven-duplicate-finder-plugin</artifactId>
+                <version>1.0.9</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!--quasar协程AOT编译期 instrument 插件-->
             <plugin>
