@@ -608,7 +608,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.14.8</version>
+            <version>1.18.28</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
@@ -645,21 +645,21 @@
             <artifactId>hystrix-core</artifactId>
             <version>1.5.12</version>
         </dependency>
-        <dependency>
-            <groupId>com.netflix.hystrix</groupId>
-            <artifactId>hystrix-javanica</artifactId>
-            <version>1.5.13</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>aspectjweaver</artifactId>
-                    <groupId>org.aspectj</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>aspectjrt</artifactId>
-                    <groupId>org.aspectj</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.netflix.hystrix</groupId>-->
+<!--            <artifactId>hystrix-javanica</artifactId>-->
+<!--            <version>1.5.13</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>aspectjweaver</artifactId>-->
+<!--                    <groupId>org.aspectj</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>aspectjrt</artifactId>-->
+<!--                    <groupId>org.aspectj</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.vdurmont</groupId>
