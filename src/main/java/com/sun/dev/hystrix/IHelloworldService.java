@@ -1,6 +1,6 @@
 package com.sun.dev.hystrix;
 
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 
 /**
  * Created by sunchengfei on 2018/3/28.

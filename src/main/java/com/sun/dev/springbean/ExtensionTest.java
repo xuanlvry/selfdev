@@ -1,6 +1,6 @@
 package com.sun.dev.springbean;
 
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;

@@ -2,7 +2,7 @@ package com.sun.dev.transaction;
 
 import com.sun.dev.dao.mybatis.IUserMapper;
 import com.sun.dev.service.IUserService;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

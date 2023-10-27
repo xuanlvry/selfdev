@@ -3,7 +3,7 @@ package com.sun.dev.dao;
 import com.alibaba.fastjson.JSONObject;
 import com.sun.dev.dao.mybatis.GoodsInfoDAO;
 import com.sun.dev.dao.mybatis.IUserMapper;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,7 +5,7 @@
         update GOODS_INFO set remainNum = remainNum - #{num} where id = #{id} and remainNum - #{num} >= 0;
     </update>
 
-    <resultMap id="goodsInfo" type="com.sun.dev.service.GoodsInfo">
+    <resultMap id="goodsInfo" type="com.sun.dev.entity.GoodsInfo">
         <result column="id" property="id"/>
         <result column="remainNum" property="remainNum"/>
         <result column="goodsName" property="goodsName"/>

@@ -1,6 +1,6 @@
 package com.sun.dev.hystrix;
 
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,7 @@
 package com.sun.dev.service;
 
+import com.sun.dev.entity.UserInfo;
+
 /**
  * Created by Chengfei.Sun on 17/03/28.
  */

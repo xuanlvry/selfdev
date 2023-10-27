@@ -1,6 +1,7 @@
 package com.sun.dev.service;
 
 import com.sun.dev.dao.mybatis.IUserMapper;
+import com.sun.dev.entity.UserInfo;
 import com.sun.dev.redis.UserRedisDAO;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.sun.dev.proxy.spring;
 
 import com.sun.dev.service.IUserService;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

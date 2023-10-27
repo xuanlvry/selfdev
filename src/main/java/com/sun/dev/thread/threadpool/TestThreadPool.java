@@ -1,7 +1,7 @@
 package com.sun.dev.thread.threadpool;
 
-import com.sun.dev.service.GoodsInfo;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.GoodsInfo;
+import com.sun.dev.entity.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

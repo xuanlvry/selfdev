@@ -1,6 +1,6 @@
 package com.sun.dev.dao.mybatis;
 
-import com.sun.dev.service.GoodsInfo;
+import com.sun.dev.entity.GoodsInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**

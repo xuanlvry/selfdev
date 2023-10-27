@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 //@Component
 @Aspect
 public class AnnotationAspect {
-    @Pointcut("args(com.sun.dev.service.UserInfo)")
+    @Pointcut("args(com.sun.dev.entity.UserInfo)")
     public void cut() {
     }
 

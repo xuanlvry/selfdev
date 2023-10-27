@@ -1,7 +1,7 @@
 package com.sun.dev.dao.mybatis;
 
 import com.sun.dev.dao.mybatis.typehandler.ListStringTypeHandler;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 

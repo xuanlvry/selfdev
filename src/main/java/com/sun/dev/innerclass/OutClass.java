@@ -1,7 +1,7 @@
 package com.sun.dev.innerclass;
 
 import com.sun.dev.service.IUserService;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 
 /**
  * Created by sunchengfei on 2019/2/21.

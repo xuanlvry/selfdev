@@ -1,6 +1,6 @@
 package com.sun.dev.hystrix.service;
 
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import com.sun.dev.hystrix.IHelloworldService;
 import org.springframework.stereotype.Service;
 

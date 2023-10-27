@@ -1,7 +1,7 @@
 package com.sun.dev.springbatch;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.springframework.batch.item.ItemProcessor;
 
 /**

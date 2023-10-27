@@ -1,4 +1,4 @@
-package com.sun.dev.service;
+package com.sun.dev.entity;
 
 import lombok.Data;
 

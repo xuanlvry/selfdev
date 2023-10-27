@@ -1,6 +1,7 @@
 package com.sun.dev.service;
 
 import com.sun.dev.dao.mybatis.GoodsInfoDAO;
+import com.sun.dev.entity.GoodsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

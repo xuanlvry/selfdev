@@ -1,7 +1,7 @@
 package com.sun.dev.dao.mybatis;
 
 import com.sun.dev.service.IUserService;
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

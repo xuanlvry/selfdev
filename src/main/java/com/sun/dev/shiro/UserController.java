@@ -1,6 +1,6 @@
 package com.sun.dev.shiro;
 
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import com.sun.dev.common.constants.ServiceResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;

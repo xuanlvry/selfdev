@@ -1,6 +1,6 @@
 package com.sun.dev.springbatch;
 
-import com.sun.dev.service.UserInfo;
+import com.sun.dev.entity.UserInfo;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
